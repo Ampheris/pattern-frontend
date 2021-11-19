@@ -21,10 +21,8 @@ Route::get('/', function () {
 });
 
 /*
- * Bikes Routes
+ * Home Route: Shows map
  */
-Route::get('/bikes', [App\Http\Controllers\MapController::class, 'index'])->name('map');
+Route::get('/home', [App\Http\Controllers\MapController::class, 'index'])->name('map');
 
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
