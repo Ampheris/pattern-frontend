@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
-class HomeController extends Controller
+class MapController extends Controller
 {
     // /**
     //  * Create a new controller instance.
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('map');
+        $bikes = Http::get('http://localhost:8080/sparkapi/v1/bikes');
+        return view('map', [
+            "bikes" => $bikes,
+        ]);
     }
 }

@@ -10020,3 +10020,46 @@ h3 {
     border-color: #dee2e6;
   }
 }
+#map {
+  min-height: 100vh;
+  width: 100%;
+  z-index: -12;
+}
+
+#slide-navbar-collapse {
+  position: fixed;
+  top: 0;
+  left: 15px;
+  z-index: 99;
+  width: 280px;
+  height: 100%;
+  background-color: #ddd;
+  overflow: auto;
+}
+
+.menu-overlay {
+  display: none;
+  background-color: #000;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  /* IE7 & 8 */
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 49;
+}
+
+.navbar {
+  margin-bottom: 0 !important;
+}
+
+.pb-4, .py-4 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl {
+  display: block !important;
+}

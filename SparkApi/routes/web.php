@@ -20,10 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bikes', function () {
-    return Http::get(BASE_URL . 'bikes');
-});
+/*
+ * Bikes Routes
+ */
+Route::get('/bikes', [App\Http\Controllers\MapController::class, 'index'])->name('map');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
