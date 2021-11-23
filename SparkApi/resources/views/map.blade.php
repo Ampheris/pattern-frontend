@@ -1,7 +1,5 @@
 @extends('layouts.app')
-@php
 
-@endphp
 @section('content')
 <div class="map" id="map">
 
