@@ -1,0 +1,6 @@
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Auth\RegisterController.php:52	Avoid using static access to class '\Illuminate\Support\Facades\Validator' in method 'validator'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Auth\RegisterController.php:67	Avoid using static access to class '\App\Models\User' in method 'create'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Auth\RegisterController.php:70	Avoid using static access to class '\Illuminate\Support\Facades\Hash' in method 'create'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\MapController.php:27	Avoid using static access to class '\Illuminate\Support\Facades\Http' in method 'index'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\tests\Feature\ExampleTest.php:15	The method test_example is not named in camelCase.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\tests\Unit\ExampleTest.php:14	The method test_example is not named in camelCase.
