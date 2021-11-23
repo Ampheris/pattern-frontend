@@ -17,13 +17,13 @@
     php artisan serve
     ```
 * To compile css and js:
-    	```text
-        npm run dev
-        ```
-        or
-    	```text
-        npm run watch
-        ```
+	```text
+    npm run dev
+    ```
+    or
+	```text
+    npm run watch
+    ```
 
 ## Code quality
 Make sure you keep a good code standard when contributing
