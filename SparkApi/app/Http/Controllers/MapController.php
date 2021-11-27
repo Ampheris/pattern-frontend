@@ -25,8 +25,15 @@ class MapController extends Controller
     public function index()
     {
         $bikes = Http::get('http://localhost:8080/sparkapi/v1/bikes');
+        $cities = Http::get('http://localhost:8080/sparkapi/v1/cities');
+        $chargingstations = Http::get('http://localhost:8080/sparkapi/v1/chargingstations');
+        $parkingspaces = Http::get('http://localhost:8080/sparkapi/v1/parkingspaces');
+
         return view('map', [
             "bikes" => $bikes,
+            "cities" => $cities,
+            "chargingstations" => $chargingstations,
+            "parkingspaces" => $parkingspaces
         ]);
     }
 }
