@@ -28,7 +28,7 @@
 </head>
 <body>
     <div id="app">
-            @include('layouts/navbar')
+            @include('admin/layouts/navbar')
         <div class="menu-overlay"></div>
         <main class="py-4">
             @yield('content')

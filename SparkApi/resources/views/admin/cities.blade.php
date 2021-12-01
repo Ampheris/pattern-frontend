@@ -1,10 +1,12 @@
-@extends('layouts.app')
+@extends('admin/layouts.app')
 @section('content')
 <h1>Hej</h1>
 
 
 {{-- Change the city --}}
-<form method="PUT" action="">
+<form action="">
+    {{ method_field('PUT') }}
+
     {!! csrf_field() !!}
 
     @if (count($errors) > 0)
@@ -36,6 +38,23 @@
         </button>
     </div>
 </form>
+
+
+<form action="/admin/cities" method="POST">
+    <label for="city">Namn på staden</label><br>
+    <input type="text" id="city" name="city"><br>
+
+    <label for="x">X Position</label><br>
+    <input type="text" id="x" name="x" value="Doe"><br><br>
+
+    <label for="y">Y Position</label><br>
+    <input type="text" id="y" name="x"><br><br>
+
+    <label for="radius">Radius</label>
+    <input type="number" id="radius" name="radius" step="0.01">
+
+    <input type="submit" value="Submit">
+</form> 
 
 @foreach ($cities as $city)
     
