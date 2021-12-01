@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -29,7 +29,7 @@ class MapController extends Controller
         $chargingstations = Http::get('http://localhost:8080/sparkapi/v1/chargingstations');
         $parkingspaces = Http::get('http://localhost:8080/sparkapi/v1/parkingspaces');
 
-        return view('map', [
+        return view('Users.map', [
             "bikes" => $bikes,
             "cities" => $cities,
             "chargingstations" => $chargingstations,

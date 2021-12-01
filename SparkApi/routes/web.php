@@ -16,26 +16,30 @@ use Illuminate\Support\Facades\Http;
 
 define('BASE_URL', 'http://localhost:8080/sparkapi/v1/');
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 /*
  * / Route: Shows map
  */
-Route::get('/', [App\Http\Controllers\MapController::class, 'index'])->name('map');
+Route::get('/', [App\Http\Controllers\Users\MapController::class, 'index'])->name('map');
 
 /*
  * bikeride Route: You get here after you choose a bike on the map. If the bike is available you can click on start a ride.
  */
-Route::get('/bikeride/{bike_id}', [App\Http\Controllers\BikeRideController::class, 'index'])->name('bikeride');
-Route::post('/startbikeride', [App\Http\Controllers\BikeRideController::class, 'startBikeRide'])->name('startBikeRide');
+Route::get('/bikeride/{bike_id}', [App\Http\Controllers\Users\BikeRideController::class, 'index'])->name('bikeride');
+Route::post('/startbikeride', [App\Http\Controllers\Users\BikeRideController::class, 'startBikeRide'])->name('startBikeRide');
 
 /*
  * history Route: Shows a list of the users bikehistory
  */
-Route::get('/history', [App\Http\Controllers\HistoryController::class, 'index'])->name('history');
-Route::get('/history/{historyId}', [App\Http\Controllers\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
+Route::get('/history', [App\Http\Controllers\Users\HistoryController::class, 'index'])->name('history');
+Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
 
+/*
+ * cities admin route: Shows a list of the cities and edit or add a city.
+ */
+Route::get('/admin/cities', [App\Http\Controllers\Admin\CitiesController::class, 'index'])->name('cities');
+
+
+Route::put('/admin/cities/{id}', [CitiesController::class, 'update']);
 
 Auth::routes();

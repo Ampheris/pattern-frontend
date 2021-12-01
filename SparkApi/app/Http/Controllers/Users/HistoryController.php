@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -28,7 +28,7 @@ class HistoryController extends Controller
         $history = Http::get("http://localhost:8080/sparkapi/v1/bikehistory/user/" . "1");
 
         $history = json_decode($history, true);
-        return view('history', [
+        return view('Users.history', [
             "history" => $history
         ]);
     }

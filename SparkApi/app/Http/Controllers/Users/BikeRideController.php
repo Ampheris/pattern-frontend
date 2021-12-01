@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -27,7 +27,7 @@ class BikeRideController extends Controller
 
         $bike = Http::get("http://localhost:8080/sparkapi/v1/bikes/" . $bikeId);
 
-        return view('bikeride', [
+        return view('Users.bikeride', [
             "bike" => $bike
         ]);
     }
