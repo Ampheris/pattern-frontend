@@ -13,9 +13,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="slide-navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">Profil</a></li>
-        <li><a href="{{ route('history') }}">Historik</a></li>
-        <li><a href="#">Hjälp</a></li>
+        <li><a href="{{ route('cities') }}">Alla städer</a></li>
+        <li><a href="#">Alla kunder</a></li>
+        <li><a href="#">Alla sparkcyklar</a></li>
         <li><a href="#">Inställningar</a></li>
       </ul>
     </div>

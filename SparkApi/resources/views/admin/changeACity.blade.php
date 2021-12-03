@@ -1,23 +1,9 @@
+{{-- Change the city --}}
 @extends('admin/layouts.app')
 @section('content')
-
-<nav class="navbar navbar-light bg-light">
-    <form class="form-inline">
-      <button class="btn btn-outline-success" type="button"><a href="{{ route('create') }}">Lägg till stad</a></button>
-      <button class="btn btn-outline-success" type="button"><a href="{{ route('changeACity') }}">Ändra stad</a></button>
-    </form>
-  </nav>
-
-
-<h1>Alla Städer </h1>
-@foreach ($cities as $city)
-    <p><a href="{{route('showSingleCity', ['city_id' => $city['id']])}}"> {{ $city["city"] }} </a></p>
-@endforeach
-
-
-{{-- Change the city --}}
-{{-- <h1>Ändra en stad</h1> --}}
-{{-- <form action="">
+<a href="{{ route('cities') }}">Go back</a>
+<h1>Ändra en stad</h1>
+<form action="">
     {{ method_field('PUT') }}
 
     {!! csrf_field() !!}
@@ -51,7 +37,5 @@
             Ändra staden
         </button>
     </div>
-</form> --}}
-
-
+</form>
 @endsection

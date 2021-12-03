@@ -17,19 +17,37 @@ class CitiesController extends Controller
     {
         $cities = Http::get('http://localhost:8080/sparkapi/v1/cities');
         $cities = json_decode($cities, true);
-        return view('admin.cities', [
+        return view('admin.map', [
             "cities" => $cities,
         ]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $cities = Http::get('http://localhost:8080/sparkapi/v1/cities');
+        $cities = json_decode($cities, true);
+        return view('admin.addCity', [
+            "cities" => $cities,
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function changeACity()
+    {
+        $cities = Http::get('http://localhost:8080/sparkapi/v1/cities');
+        $cities = json_decode($cities, true);
+        return view('admin.changeACity', [
+            "cities" => $cities,
+        ]);
     }
 
     /**
@@ -40,7 +58,15 @@ class CitiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'city' => $request->input('city'),
+            'X' => $request->input('X'),
+            'Y' => $request->input('Y'),
+            'radius' => $request->input('radius'),
+        ];
+
+        Http::post("http://localhost:8080/sparkapi/v1/cities/", $data);
+        return redirect('/admin/cities');
     }
 
     /**
@@ -53,6 +79,24 @@ class CitiesController extends Controller
     {
         //
     }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showSingleCity($city_id)
+    {
+        $city = Http::get("http://localhost:8080/sparkapi/v1/cities/" . $city_id);
+
+        $city = json_decode($city, true);
+        return view('admin.showSingleCity', [
+            "city" => $city
+        ]);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
