@@ -17,7 +17,7 @@ class CitiesController extends Controller
     {
         $cities = Http::get('http://localhost:8080/sparkapi/v1/cities');
         $cities = json_decode($cities, true);
-        return view('admin.map', [
+        return view('admin.cities', [
             "cities" => $cities,
         ]);
     }

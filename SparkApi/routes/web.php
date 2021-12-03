@@ -37,6 +37,8 @@ Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController
 /*
  * cities admin route: Shows a list of the cities and edit or add a city.
  */
+ Route::get('/admin', [App\Http\Controllers\Admin\MapController::class, 'index'])->name('map');
+
 Route::get('/admin/cities', [App\Http\Controllers\Admin\CitiesController::class, 'index'])->name('cities');
 Route::get('/admin/cities/create', [App\Http\Controllers\Admin\CitiesController::class, 'create'])->name('create');
 Route::get('/admin/cities/change', [App\Http\Controllers\Admin\CitiesController::class, 'changeACity'])->name('changeACity');
