@@ -2,6 +2,6 @@
 
 @section('content')
 <div class="list-group">
-{{ var_dump($history) }}
+{{ var_dump($order) }}
 </div>
 @endsection

@@ -5,7 +5,11 @@
     <p>{{ $bike['id'] }}</p>
     <p>{{ $bike['status'] }}</p>
 
-@if ($bike['status'] == 'tillgänglig')
+@if (isset($message))
+{{ $message }}
+@endif
+
+@if ($bike['status'] == 'available')
     <form method="post" action="{{ route('startBikeRide') }}">
     @csrf
         <input type="submit" name="submit" value="Starta cykeln">

@@ -24,9 +24,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-
-        $subscription = Http::get(env('API_URL') . 'subscriptions/' . '1');
-        $user = Http::get(env('API_URL') . 'users/' . '1');
+        $http = new Http();
+        $subscription = $http::get(env('API_URL') . 'subscriptions/' . '1');
+        $user = $http::get(env('API_URL') . 'users/' . '1');
 
         $subscription = json_decode($subscription, true);
         return view('Users.profile', [
@@ -37,7 +37,8 @@ class ProfileController extends Controller
 
     public function subscription()
     {
-        $subscription = Http::get(env('API_URL') . 'subscriptions/' . '3');
+        $http = new Http();
+        $subscription = $http::get(env('API_URL') . 'subscriptions/' . 1);
         return view('Users.subscription', [
             'subscription' => $subscription
         ]);
@@ -45,23 +46,43 @@ class ProfileController extends Controller
 
     public function balance()
     {
-        $user = Http::get(env('API_URL') . 'users/' . '1');
+        $http = new Http();
+        $user = $http::get(env('API_URL') . 'users/' . '1');
         return view('Users.balance', [
             'balance' => $user['balance']
         ]);
     }
 
-    public function manageSubscription(Request $request)
+    public function addToBalance(Request $request)
     {
+        $http = new Http();
+        $user = $http::get(env('API_URL') . 'users/' . '1');
 
-        var_dump($request);
         $data = [
-            'user_id' => 3
+            'balance' => $user['balance'] + $request['balance']
         ];
 
-        $subscription = Http::post(env('API_URL') . 'subscription/', $data);
-        return view('Users.subscription', [
+        $user = $http::put(env('API_URL') . 'users/' . 1, $data);
+        return redirect()->route('balance');
+    }
+
+    public function manageSubscription()
+    {
+        $data = [
+            'customer_id' => 1
+        ];
+
+        $http = new Http();
+        $subscription = $http::post(env('API_URL') . 'subscriptions/', $data);
+        return redirect()->route('subscription', [
             'subscription' => $subscription
         ]);
+    }
+
+    public function endSubscription(Request $request)
+    {
+        $http = new Http();
+        $http::put(env('API_URL') . 'subscriptions/stop/' . $request['subscriptionId']);
+        return redirect()->route('subscription');
     }
 }

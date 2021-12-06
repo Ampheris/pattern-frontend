@@ -24,10 +24,11 @@ class MapController extends Controller
      */
     public function index()
     {
-        $bikes = Http::get(env('API_URL') . 'bikes');
-        $cities = Http::get(env('API_URL') . 'cities');
-        $chargingstations = Http::get(env('API_URL') . 'chargingstations');
-        $parkingspaces = Http::get(env('API_URL') . 'parkingspaces');
+        $http = new Http();
+        $bikes = $http::get(env('API_URL') . 'bikes');
+        $cities = $http::get(env('API_URL') . 'cities');
+        $chargingstations = $http::get(env('API_URL') . 'chargingstations');
+        $parkingspaces = $http::get(env('API_URL') . 'parkingspaces');
 
         return view('admin.map', [
             "bikes" => $bikes,

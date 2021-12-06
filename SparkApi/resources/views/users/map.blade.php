@@ -1,9 +1,10 @@
 @extends('users/layouts.app')
 
 @section('content')
+{{ $renew }}
 <div class="map" id="map">
-
 </div>
+<a href="{{ route('stopBikeRide') }}">Avsluta åktur</a>
 @endsection
 @section('styles')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"

@@ -1,8 +1,13 @@
 @extends('users/layouts.app')
 
 @section('content')
-@if (isset($subscription['id']))
+@if (isset($subscription['id']) && $subscription['cancelation_date'] == null)
 {{$subscription}}
+    <form method="post" action="{{ route('endSubscription') }}">
+    @csrf
+        <input type="submit" name="submit" value="Avsluta subscription">
+        <input type="hidden" name="subscriptionId" value="{{ $subscription['id'] }}">
+    </form>
 @else
 <!-- FOR DEMO PURPOSE -->
 <div class="container py-5">
@@ -24,7 +29,7 @@
           <div class="form-group">
             <label for="cardNumber">Card number</label>
             <div class="form-group">
-              <input type="text" maxlength="19" inputmode="numeric" pattern="[0-9\s]{13,19}" name="cardNumber" placeholder="Your card number" class="form-control" required>
+              <input type="tel" maxlength="19" inputmode="numeric" name="cardNumber" placeholder="Your card number" class="form-control" required>
             </div>
           </div>
           <div class="row">
