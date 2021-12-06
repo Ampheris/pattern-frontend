@@ -24,10 +24,10 @@ class MapController extends Controller
      */
     public function index()
     {
-        $bikes = Http::get('http://localhost:8080/sparkapi/v1/bikes');
-        $cities = Http::get('http://localhost:8080/sparkapi/v1/cities');
-        $chargingstations = Http::get('http://localhost:8080/sparkapi/v1/chargingstations');
-        $parkingspaces = Http::get('http://localhost:8080/sparkapi/v1/parkingspaces');
+        $bikes = Http::get(env('API_URL') . 'bikes');
+        $cities = Http::get(env('API_URL') .'cities');
+        $chargingstations = Http::get(env('API_URL') . 'chargingstations');
+        $parkingspaces = Http::get(env('API_URL') . 'parkingspaces');
 
         return view('Users.map', [
             "bikes" => $bikes,

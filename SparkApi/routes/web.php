@@ -34,6 +34,19 @@ Route::post('/startbikeride', [App\Http\Controllers\Users\BikeRideController::cl
 Route::get('/history', [App\Http\Controllers\Users\HistoryController::class, 'index'])->name('history');
 Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
 
+
+/*
+ * Profile
+ */
+Route::get('/profile', [App\Http\Controllers\Users\ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/subscription', [App\Http\Controllers\Users\ProfileController::class, 'subscription'])->name('subscription');
+Route::post('/profile/subscription', [App\Http\Controllers\Users\ProfileController::class, 'manageSubscription'])->name('manageSubscription');
+Route::get('/profile/balance', [App\Http\Controllers\Users\ProfileController::class, 'balance'])->name('balance');
+Route::post('/profile/balance', [App\Http\Controllers\Users\ProfileController::class, 'addToBalance'])->name('addToBalance');
+
+// Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
+
+
 /*
  * cities admin route: Shows a list of the cities and edit or add a city.
  */

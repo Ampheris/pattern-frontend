@@ -25,7 +25,7 @@ class BikeRideController extends Controller
     public function index($bikeId)
     {
 
-        $bike = Http::get("http://localhost:8080/sparkapi/v1/bikes/" . $bikeId);
+        $bike = Http::get(env('API_URL') . 'bikes/' . $bikeId);
 
         return view('Users.bikeride', [
             "bike" => $bike
@@ -34,7 +34,7 @@ class BikeRideController extends Controller
 
     public function startBikeRide(Request $request)
     {
-        $bike = Http::get("http://localhost:8080/sparkapi/v1/bikes/" . $request->input('bike'));
+        $bike = Http::get(env('API_URL') . 'bikes/' . $request->input('bike'));
 
         $data = [
             'start_x' => $bike['X'],
@@ -43,7 +43,7 @@ class BikeRideController extends Controller
             'bike_id' => $bike['id']
         ];
 
-        Http::post("http://localhost:8080/sparkapi/v1/bikehistory/start", $data);
+        Http::post(env('API_URL') . 'bikehistory/start', $data);
         return redirect()->route('bikeride', ['bike_id' => $bike['id']]);
     }
 }

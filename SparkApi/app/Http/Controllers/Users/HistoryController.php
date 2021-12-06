@@ -25,7 +25,7 @@ class HistoryController extends Controller
     public function index()
     {
 
-        $history = Http::get("http://localhost:8080/sparkapi/v1/bikehistory/user/" . "1");
+        $history = Http::get(env('API_URL') . 'bikehistory/user/' . '1');
 
         $history = json_decode($history, true);
         return view('Users.history', [
@@ -35,7 +35,7 @@ class HistoryController extends Controller
 
     public function showSingleHistory($historyId)
     {
-        $history = Http::get("http://localhost:8080/sparkapi/v1/bikehistory/" . $historyId);
+        $history = Http::get(env('API_URL') . 'bikehistory/' . $historyId);
         $history = json_decode($history, true);
         return view('singleHistory', [
             "history" => $history
