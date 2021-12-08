@@ -29,8 +29,13 @@ class MapController extends Controller
         $cities = $http::get(env('API_URL') . 'cities');
         $chargingstations = $http::get(env('API_URL') . 'chargingstations');
         $parkingspaces = $http::get(env('API_URL') . 'parkingspaces');
-        $subscription = $http::get(env('API_URL') . 'subscriptions/' . 1);
-        $renew = $http::put(env('API_URL') . 'subscriptions/renew/' . $subscription['id']);
+        $subscription = $http::get(env('API_URL') . 'subscriptions/' . 5);
+        
+        try {
+            $renew = $http::put(env('API_URL') . 'subscriptions/renew/' . $subscription['id']);
+        } catch (\Exception $e) {
+            $renew = "";
+        }
 
         return view('Users.map', [
             "bikes" => $bikes,
