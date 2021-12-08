@@ -30,7 +30,7 @@ class MapController extends Controller
         $chargingstations = $http::get(env('API_URL') . 'chargingstations');
         $parkingspaces = $http::get(env('API_URL') . 'parkingspaces');
 
-        return view('admin.map', [
+        return view('Admin.map', [
             "bikes" => $bikes,
             "cities" => $cities,
             "chargingstations" => $chargingstations,

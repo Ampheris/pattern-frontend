@@ -35,6 +35,7 @@ Route::get('/stopbikeride', [App\Http\Controllers\Users\BikeRideController::clas
 Route::get('/history', [App\Http\Controllers\Users\HistoryController::class, 'index'])->name('history');
 Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
 
+
 /*
  * order Route: Shows a list of the users orders
  */
@@ -60,9 +61,11 @@ Route::post('/profile/balance', [App\Http\Controllers\Users\ProfileController::c
  */
  Route::get('/admin', [App\Http\Controllers\Admin\MapController::class, 'index'])->name('adminMap');
 
+/*
+ * cities admin route: Shows a list of the cities and edit or add a city.
+*/
 Route::get('/admin/cities', [App\Http\Controllers\Admin\CitiesController::class, 'index'])->name('cities');
 Route::get('/admin/cities/create', [App\Http\Controllers\Admin\CitiesController::class, 'create'])->name('create');
-Route::get('/admin/cities/change', [App\Http\Controllers\Admin\CitiesController::class, 'changeACity'])->name('changeACity');
 Route::post('/admin/cities', [App\Http\Controllers\Admin\CitiesController::class, 'store'])->name('store');
 
 Route::get('/admin/cities/change/{cityId}', [App\Http\Controllers\Admin\CitiesController::class, 'showSingleCity'])->name('showSingleCity');
