@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class HistoryController extends Controller
+class OrderController extends Controller
 {
     // /**
     //  * Create a new controller instance.
@@ -25,21 +25,21 @@ class HistoryController extends Controller
     public function index()
     {
         $http = new Http();
-        $history = $http::get(env('API_URL') . 'bikehistory/user/' . '1');
+        $orders = $http::get(env('API_URL') . 'orders/user/' . '1');
 
-        $history = json_decode($history, true);
-        return view('Users.history', [
-            "history" => $history
+        $orders = json_decode($orders, true);
+        return view('Users.orders', [
+            "orders" => $orders
         ]);
     }
 
-    public function showSingleHistory($historyId)
+    public function showSingleOrder($orderId)
     {
         $http = new Http();
-        $history = $http::get(env('API_URL') . 'bikehistory/' . $historyId);
-        $history = json_decode($history, true);
-        return view('Users.singleHistory', [
-            "history" => $history
+        $order = $http::get(env('API_URL') . 'orders/' . $orderId);
+        $order = json_decode($order, true);
+        return view('Users.singleOrder', [
+            "order" => $order
         ]);
     }
 }

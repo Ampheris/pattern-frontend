@@ -5,17 +5,17 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-
 class CitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $cities = Http::get(env('API_URL') . 'cities');
+        $http = new Http();
+        $cities = $http::get('http://localhost:8080/sparkapi/v1/cities');
         $cities = json_decode($cities, true);
         return view('admin.cities', [
             "cities" => $cities,
@@ -25,11 +25,12 @@ class CitiesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
-        $cities = Http::get(env('API_URL') . 'cities');
+        $http = new Http();
+        $cities = $http::get('http://localhost:8080/sparkapi/v1/cities');
         $cities = json_decode($cities, true);
         return view('admin.addCity', [
             "cities" => $cities,
@@ -39,11 +40,12 @@ class CitiesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function changeACity()
     {
-        $cities = Http::get(env('API_URL') . 'cities');
+        $http = new Http();
+        $cities = $http::get('http://localhost:8080/sparkapi/v1/cities');
         $cities = json_decode($cities, true);
         return view('admin.changeACity', [
             "cities" => $cities,
@@ -54,7 +56,7 @@ class CitiesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
@@ -65,69 +67,72 @@ class CitiesController extends Controller
             'radius' => $request->input('radius'),
         ];
 
-        Http::post(env('API_URL') . 'cities', $data);
+        $http = new Http();
+        $http::post("http://localhost:8080/sparkapi/v1/cities/", $data);
         return redirect('/admin/cities');
     }
 
+    // /**
+    //  * Display the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function show($id)
+    // {
+    //     //
+    // }
+    //
+
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $cityId
+     * @return \Illuminate\Contracts\View\View
      */
     public function showSingleCity($cityId)
     {
-        $city = Http::get(env('API_URL') . 'cities/' . $cityId);
+        $http = new Http();
+        $city = $http::get("http://localhost:8080/sparkapi/v1/cities/" . $cityId);
+
         $city = json_decode($city, true);
         return view('admin.showSingleCity', [
             "city" => $city
         ]);
     }
 
+    //
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit($id)
+    // {
+    //     //
+    // }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function update(Request $request, $id)
+    // {
+    //     //
+    // }
+    //
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function destroy($id)
+    // {
+    //     //
+    // }
 }

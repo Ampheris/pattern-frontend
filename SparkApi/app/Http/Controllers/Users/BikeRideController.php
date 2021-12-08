@@ -22,28 +22,42 @@ class BikeRideController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index($bikeId)
+    public function index(Request $request, $bikeId)
     {
-
-        $bike = Http::get("http://localhost:8080/sparkapi/v1/bikes/" . $bikeId);
+        $http = new Http();
+        $bike = $http::get(env('API_URL') . 'bikes/' . $bikeId);
 
         return view('Users.bikeride', [
-            "bike" => $bike
+            "bike" => $bike,
+            "message" => $request['message'] ?? null
         ]);
     }
 
     public function startBikeRide(Request $request)
     {
-        $bike = Http::get("http://localhost:8080/sparkapi/v1/bikes/" . $request->input('bike'));
+        $http = new Http();
+        $bike = $http::get(env('API_URL') . 'bikes/' . $request->input('bike'));
 
         $data = [
-            'start_x' => $bike['X'],
-            'start_y' => $bike['Y'],
             'customer_id' => 1,
             'bike_id' => $bike['id']
         ];
 
-        Http::post("http://localhost:8080/sparkapi/v1/bikehistory/start", $data);
+        $http::post(env('API_URL') . 'bikehistory/start', $data);
         return redirect()->route('bikeride', ['bike_id' => $bike['id']]);
+    }
+
+    public function stopBikeRide()
+    {
+        $http = new Http();
+        $bike = $http::get(env('API_URL') . 'bikehistory/user/active/' . 1);
+        $bikeRide = $http::put(env('API_URL') . 'bikehistory/stop/' . 1);
+
+        if (isset($bikeRide['message'])) {
+            $message  = $bikeRide['message'];
+            return redirect()->route('bikeride', ['bike_id' => $bike['bike_id'], 'message' => $message]);
+        }
+            // $message  = null;
+        return redirect()->route('bikeride', ['bike_id' => $bike['bike_id']]);
     }
 }
