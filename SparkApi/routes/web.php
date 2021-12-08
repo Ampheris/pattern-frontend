@@ -22,6 +22,15 @@ define('BASE_URL', 'http://localhost:8080/sparkapi/v1/');
  */
 Route::get('/', [App\Http\Controllers\Users\MapController::class, 'index'])->name('map');
 
+
+/*
+ * / User route login
+*/
+Route::get('/loginGithub', [App\Http\Controllers\Users\LoginController::class, 'index'])->name('login');
+Route::post('/loginGithub', [App\Http\Controllers\Users\LoginController::class, 'login'])->name('loginUser');
+
+
+
 /*
  * bikeride Route: You get here after you choose a bike on the map. If the bike is available you can click on start a ride.
  */
@@ -69,6 +78,21 @@ Route::get('/admin/cities/create', [App\Http\Controllers\Admin\CitiesController:
 Route::post('/admin/cities', [App\Http\Controllers\Admin\CitiesController::class, 'store'])->name('store');
 
 Route::get('/admin/cities/change/{cityId}', [App\Http\Controllers\Admin\CitiesController::class, 'showSingleCity'])->name('showSingleCity');
+
+
+/*
+ * Admin user route
+ */
+Route::get('/admin/users', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('users');
+Route::get('/admin/user', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('users');
+
+
+/*
+ * Admin bike route
+ */
+Route::get('/admin/bikes', [App\Http\Controllers\Admin\BikesController::class, 'index'])->name('bikes');
+Route::get('/admin/bikes/{bikeId}', [App\Http\Controllers\Admin\BikesController::class, 'showSingleBike'])->name('showSingleBike');
+
 
 
 Auth::routes();
