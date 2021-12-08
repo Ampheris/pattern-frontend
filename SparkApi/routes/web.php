@@ -30,7 +30,6 @@ Route::get('/loginGithub', [App\Http\Controllers\Users\LoginController::class, '
 Route::post('/loginGithub', [App\Http\Controllers\Users\LoginController::class, 'login'])->name('loginUser');
 
 
-
 /*
  * bikeride Route: You get here after you choose a bike on the map. If the bike is available you can click on start a ride.
  */
