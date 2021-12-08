@@ -17,6 +17,7 @@
         <li><a href="{{ route('history') }}">Historik</a></li>
         <li><a href="#">Hjälp</a></li>
         <li><a href="#">Inställningar</a></li>
+        <li><a href="{{ 'loginGithub' }}">Login</a></li>
         <li><a href="{{ 'admin' }}">Admin</a></li>
       </ul>
     </div>

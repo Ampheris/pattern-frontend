@@ -29,7 +29,7 @@ class MapController extends Controller
         $chargingstations = Http::get('http://localhost:8080/sparkapi/v1/chargingstations');
         $parkingspaces = Http::get('http://localhost:8080/sparkapi/v1/parkingspaces');
 
-        return view('admin.map', [
+        return view('Admin.map', [
             "bikes" => $bikes,
             "cities" => $cities,
             "chargingstations" => $chargingstations,

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 
-class CitiesController extends Controller
+class BikesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +15,10 @@ class CitiesController extends Controller
      */
     public function index()
     {
-        $cities = Http::get(env('API_URL') . 'cities');
-        $cities = json_decode($cities, true);
-        return view('admin.cities', [
-            "cities" => $cities,
+        $bikes = Http::get(env('API_URL') . 'bikes');
+        $bikes = json_decode($bikes, true);
+        return view('admin.bikes', [
+            "bikes" => $bikes,
         ]);
     }
 
@@ -27,28 +27,28 @@ class CitiesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        $cities = Http::get(env('API_URL') . 'cities');
-        $cities = json_decode($cities, true);
-        return view('admin.addCity', [
-            "cities" => $cities,
-        ]);
-    }
+    // public function create()
+    // {
+    //     $cities = Http::get(env('API_URL') . 'cities');
+    //     $cities = json_decode($cities, true);
+    //     return view('admin.addCity', [
+    //         "cities" => $cities,
+    //     ]);
+    // }
 
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function changeACity()
-    {
-        $cities = Http::get(env('API_URL') . 'cities');
-        $cities = json_decode($cities, true);
-        return view('admin.changeACity', [
-            "cities" => $cities,
-        ]);
-    }
+    // public function changeACity()
+    // {
+    //     $cities = Http::get(env('API_URL') . 'cities');
+    //     $cities = json_decode($cities, true);
+    //     return view('admin.changeACity', [
+    //         "cities" => $cities,
+    //     ]);
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -56,18 +56,18 @@ class CitiesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $data = [
-            'city' => $request->input('city'),
-            'X' => $request->input('X'),
-            'Y' => $request->input('Y'),
-            'radius' => $request->input('radius'),
-        ];
+    // public function store(Request $request)
+    // {
+    //     $data = [
+    //         'city' => $request->input('city'),
+    //         'X' => $request->input('X'),
+    //         'Y' => $request->input('Y'),
+    //         'radius' => $request->input('radius'),
+    //     ];
 
-        Http::post(env('API_URL') . 'cities', $data);
-        return redirect('/admin/cities');
-    }
+    //     Http::post(env('API_URL') . 'cities', $data);
+    //     return redirect('/admin/cities');
+    // }
 
     /**
      * Display the specified resource.
@@ -87,12 +87,12 @@ class CitiesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showSingleCity($cityId)
+    public function ShowSingleBike($bikeId)
     {
-        $city = Http::get(env('API_URL') . 'cities/' . $cityId);
-        $city = json_decode($city, true);
-        return view('admin.showSingleCity', [
-            "city" => $city
+        $bike = Http::get(env('API_URL') . 'bikes/' . $bikeId);
+        $bike = json_decode($bike, true);
+        return view('admin.showSinglebike', [
+            "bike" => $bike
         ]);
     }
 
