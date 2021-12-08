@@ -28,10 +28,11 @@ class ProfileController extends Controller
         $subscription = $http::get(env('API_URL') . 'subscriptions/' . '1');
         $user = $http::get(env('API_URL') . 'users/' . '1');
 
+        $user = json_decode($user);
         $subscription = json_decode($subscription, true);
         return view('Users.profile', [
             'subscription' => $subscription,
-            'balance' => $user['balance']
+            'balance' => $user->balance
         ]);
     }
 
