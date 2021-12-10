@@ -38,7 +38,7 @@ class MapController extends Controller
             $renew = "";
         }
 
-        return view('Users.map', [
+        return view('users.map', [
             "bikes" => $bikes,
             "cities" => $cities,
             "chargingstations" => $chargingstations,

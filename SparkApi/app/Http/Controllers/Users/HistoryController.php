@@ -28,7 +28,7 @@ class HistoryController extends Controller
         $history = $http::get(env('API_URL') . 'bikehistory/user/' . '1');
 
         $history = json_decode($history, true);
-        return view('Users.history', [
+        return view('users.history', [
             "history" => $history
         ]);
     }
@@ -38,7 +38,7 @@ class HistoryController extends Controller
         $http = new Http();
         $history = $http::get(env('API_URL') . 'bikehistory/' . $historyId);
         $history = json_decode($history, true);
-        return view('Users.singleHistory', [
+        return view('users.singleHistory', [
             "history" => $history
         ]);
     }

@@ -30,7 +30,7 @@ class ProfileController extends Controller
 
         $user = json_decode($user);
         $subscription = json_decode($subscription, true);
-        return view('Users.profile', [
+        return view('users.profile', [
             'subscription' => $subscription,
             'balance' => $user->balance
         ]);
@@ -40,7 +40,7 @@ class ProfileController extends Controller
     {
         $http = new Http();
         $subscription = $http::get(env('API_URL') . 'subscriptions/' . 1);
-        return view('Users.subscription', [
+        return view('users.subscription', [
             'subscription' => $subscription
         ]);
     }
@@ -53,7 +53,7 @@ class ProfileController extends Controller
         if (isset($request->addBalance)) {
             $addBalance = true;
         }
-        return view('Users.balance', [
+        return view('users.balance', [
             'balance' => $user['balance'],
             'addBalance' => $addBalance
         ]);

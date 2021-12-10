@@ -27,7 +27,7 @@ class BikeRideController extends Controller
         $http = new Http();
         $bike = $http::get(env('API_URL') . 'bikes/' . $bikeId);
 
-        return view('Users.bikeride', [
+        return view('users.bikeride', [
             "bike" => $bike,
             "message" => $request['message'] ?? null
         ]);

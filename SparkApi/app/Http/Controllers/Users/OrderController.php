@@ -28,7 +28,7 @@ class OrderController extends Controller
         $orders = $http::get(env('API_URL') . 'orders/user/' . '1');
 
         $orders = json_decode($orders, true);
-        return view('Users.orders', [
+        return view('users.orders', [
             "orders" => $orders
         ]);
     }
@@ -38,7 +38,7 @@ class OrderController extends Controller
         $http = new Http();
         $order = $http::get(env('API_URL') . 'orders/' . $orderId);
         $order = json_decode($order, true);
-        return view('Users.singleOrder', [
+        return view('users.singleOrder', [
             "order" => $order
         ]);
     }
