@@ -17,6 +17,7 @@ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0v
 crossorigin=""></script>
 
 <script>
+
 var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.164843254715345], 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',    {
@@ -29,6 +30,13 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     let cities = {!! $cities !!};
     let chargingstations = {!! $chargingstations !!};
     let parkingspaces = {!! $parkingspaces !!};
+
+    let locationMarker = L.icon({
+        iconUrl: "{{ url('img/location.png')}}",
+        iconSize:     [24, 24],
+        iconAnchor:   [12, 12],
+        popupAnchor:  [0, 0]
+    });
 
     var greenIcon = L.icon({
         iconUrl: "{{ url('img/icon-green.png')}}",
@@ -91,6 +99,34 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
             .openOn(map);
     }
 
+    var current_position;
+
+   function onLocationFound(e) {
+     // if position defined, then remove the existing position marker and accuracy circle from the map
+     if (current_position) {
+         map.removeLayer(current_position);
+     }
+
+     var radius = e.accuracy / 2;
+
+     current_position = L.marker(e.latlng, {icon: locationMarker}).addTo(map)
+
+   }
+
+   function onLocationError(e) {
+     alert(e.message);
+   }
+
+   map.on('locationfound', onLocationFound);
+   map.on('locationerror', onLocationError);
+
+   // wrap map.locate in a function
+   function locate() {
+     map.locate();
+   }
+
+   // call locate every 3 seconds... forever
+   setInterval(locate, 10000);
     map.on('click', onMapClick);
 </script>
 

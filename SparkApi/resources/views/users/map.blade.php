@@ -1,10 +1,11 @@
 @extends('users/layouts.app')
 
 @section('content')
-{{ $renew }}
 <div class="map" id="map">
 </div>
-<a href="{{ route('stopBikeRide') }}">Avsluta åktur</a>
+@if(isset($currentBikeRide['id']))
+<a class="stop-bike-ride" href="{{ route('stopBikeRide') }}">Avsluta åktur</a>
+@endif
 @endsection
 @section('styles')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css"
@@ -18,7 +19,7 @@ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0v
 crossorigin=""></script>
 
 <script>
-var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.164843254715345], 13);
+var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.164843254715345], 4);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',    {
         attribution: `&copy;
@@ -26,21 +27,70 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
         OpenStreetMap</a> contributors`
     }).addTo(map);
 
+    const url='http://localhost:8080/sparkapi/v1/bikes';
+    // fetch(url, {
+    //     method: 'get',
+    //     mode: 'no-cors'
+    // })
+    // .then(data=>{return data.json()})
+    // .then(res=>{console.log(res);});
+
+
+    // fetch(url, {
+    //     method: 'get',
+    //     mode: 'no-cors'
+    // })
+    //   .then(function(response) {
+    //       console.log(response.json());
+    //     return response;
+    //   })
+    //   .then(function(jsonResponse) {
+    //       console.log(jsonResponse);
+    //     // do something with jsonResponse
+    //   });
+
+  //   async function getBikes(url = '') {
+  // // Default options are marked with *
+  //     const response = await fetch(url, {
+  //       method: 'GET', // *GET, POST, PUT, DELETE, etc.
+  //       mode: 'no-cors', // no-cors, *cors, same-origin
+  //     });
+  //     return response.json(); // parses JSON response into native JavaScript objects
+  //   }
+  //
+  //   getBikes('http://localhost:8080/sparkapi/v1/bikes')
+  //     .then(data => {
+  //       console.log(data); // JSON data parsed by `data.json()` call
+  //     });
+
     let bikes = {!! $bikes !!};
     let cities = {!! $cities !!};
     let chargingstations = {!! $chargingstations !!};
     let parkingspaces = {!! $parkingspaces !!};
+    let bikeLayer = L.layerGroup();
 
+    let locationMarker = L.icon({
+        iconUrl: "{{ url('img/location.png')}}",
+        iconSize:     [24, 24],
+        iconAnchor:   [12, 12],
+        popupAnchor:  [0, 0]
+    });
 
+    console.log(bikes);
 
-    for (var i = 0; i < bikes.length; i++) {
-        console.log(bikes[i].X);
-        if (bikes[i].status == 'available') {
-            var bikeId = bikes[i].id;
-            L.marker([bikes[i].X, bikes[i].Y]).addTo(map).bindPopup(
-                `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p><a href='{{url('/bikeride')}}/${bikes[i].id}'>Boka cykel</a>`
-            );
+    function drawBikes() {
+        // map.removeLayer(bikeLayer);
+        // bikeLayer.clearLayers();
+        for (var i = 0; i < bikes.length; i++) {
+            console.log(bikes[i].X);
+            if (bikes[i].status == 'available') {
+                var bikeId = bikes[i].id;
+                bikeLayer.addLayer(L.marker([bikes[i].X, bikes[i].Y]).bindPopup(
+                    `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p><a href='{{url('/bikeride')}}/${bikes[i].id}'>Boka cykel</a>`
+                ));
+            }
         }
+        map.addLayer(bikeLayer);
     }
 
     for (var i = 0; i < cities.length; i++) {
@@ -82,6 +132,36 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     }
 
     map.on('click', onMapClick);
+
+    var current_position;
+
+   function onLocationFound(e) {
+     // if position defined, then remove the existing position marker and accuracy circle from the map
+     if (current_position) {
+         map.removeLayer(current_position);
+     }
+
+     var radius = e.accuracy / 2;
+
+     current_position = L.marker(e.latlng, {icon: locationMarker}).addTo(map)
+
+   }
+
+   function onLocationError(e) {
+     alert(e.message);
+   }
+
+   map.on('locationfound', onLocationFound);
+
+   // wrap map.locate in a function
+   function locate() {
+     map.locate();
+   }
+
+   // call locate every 3 seconds... forever
+   setInterval(locate, 10000);
+   // setInterval(drawBikes, 3000)
+   drawBikes();
 </script>
 
 @endpush

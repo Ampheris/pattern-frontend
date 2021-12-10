@@ -1,10 +1,15 @@
 @extends('users/layouts.app')
 
 @section('content')
+<a class="back-button" href="{{ route('profile') }}"><i class="material-icons">arrow_back</i>Tillbaka</a>
 <div class="container">
-    <p>{{ $balance }}</p>
+    <p>Saldo: {{ $balance }} kr</p>
+    @if($addBalance == false)
+    <a href="{{ route('showBalanceForm')}}">Fyll på</a>
+    @endif
 </div>
 <!-- FOR DEMO PURPOSE -->
+@if($addBalance)
 <div class="container py-5">
 
 <div class="row">
@@ -14,11 +19,11 @@
     <div class="tab-content">
       <!-- credit card info-->
       <div id="nav-tab-card" class="tab-pane fade show active in">
-        <p class="alert alert-success">Some text success or error</p>
+        <!-- <p class="alert alert-success">Some text success or error</p> -->
         <form role="form" method="post" action="{{ route('addToBalance') }}">
         @csrf
         <div class="form-group">
-          <label for="username">Balance</label>
+          <label for="username">Amount</label>
           <input type="number" name="balance" placeholder="0" required class="form-control">
         </div>
           <div class="form-group">
@@ -46,7 +51,7 @@
                 <label title="Three-digits code on the back of your card">CVV
                                             <i class="fa fa-question-circle"></i>
                                         </label>
-                <input type="text" maxlength="3" minlength="3" name="csv" required class="form-control">
+                <input type="text" maxlength="3" minlength="3" placeholder="123" name="csv" required class="form-control">
               </div>
             </div>
           </div>
@@ -60,4 +65,5 @@
 </div>
 </div>
 </div>
+@endif
 @endsection

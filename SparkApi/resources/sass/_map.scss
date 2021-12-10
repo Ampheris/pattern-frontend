@@ -1,0 +1,33 @@
+.leaflet-touch {
+    border: none;
+}
+
+
+.leaflet-control-layers {
+    border: none;
+}
+.leaflet-touch {
+    border: none;
+}
+
+.leaflet-bar {
+    border: none;
+}
+
+.leaflet-control-zoom,
+.leaflet-bar,
+.leaflet-control {
+    top: 8.5rem;
+    border: none;
+}
+
+.leaflet-touch
+.leaflet-bar a {
+    opacity: 0.9;
+    border: none;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+    margin: 0;
+}

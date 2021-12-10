@@ -30,7 +30,8 @@ class MapController extends Controller
         $chargingstations = $http::get(env('API_URL') . 'chargingstations');
         $parkingspaces = $http::get(env('API_URL') . 'parkingspaces');
         $subscription = $http::get(env('API_URL') . 'subscriptions/' . 5);
-        
+        $currentBikeRide = $http::get(env('API_URL') . 'bikehistory/user/active/' . 1);
+        // var_dump($bikes);
         try {
             $renew = $http::put(env('API_URL') . 'subscriptions/renew/' . $subscription['id']);
         } catch (\Exception $e) {
@@ -42,7 +43,8 @@ class MapController extends Controller
             "cities" => $cities,
             "chargingstations" => $chargingstations,
             "parkingspaces" => $parkingspaces,
-            'renew' => $renew
+            'renew' => $renew,
+            'currentBikeRide' => $currentBikeRide
         ]);
     }
 }

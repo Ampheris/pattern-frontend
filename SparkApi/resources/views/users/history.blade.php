@@ -1,9 +1,10 @@
 @extends('users/layouts.app')
 
 @section('content')
+<p class="list-header">Historik</p>
 <div class="list-group">
 @foreach ($history as $item)
-  <a href="{{ route('singleHistory', ['historyId' => $item['id']]) }}" class="list-group-item list-group-item-action active" aria-current="true">
+  <a href="{{ route('singleHistory', ['historyId' => $item['id']]) }}" class="list-group-item list-group-item-action" aria-current="true">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{ $item['start_time'] }}</h5>
       <small>{{ $item['stop_time'] }}</small>
