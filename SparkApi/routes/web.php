@@ -51,6 +51,7 @@ Route::get('/profile/subscription', [App\Http\Controllers\Users\ProfileControlle
 Route::post('/profile/subscription', [App\Http\Controllers\Users\ProfileController::class, 'manageSubscription'])->name('manageSubscription');
 Route::post('/profile/subscription/stop', [App\Http\Controllers\Users\ProfileController::class, 'endSubscription'])->name('endSubscription');
 Route::get('/profile/balance', [App\Http\Controllers\Users\ProfileController::class, 'balance'])->name('balance');
+Route::get('/profile/balance-form', [App\Http\Controllers\Users\ProfileController::class, 'showBalanceForm'])->name('showBalanceForm');
 Route::post('/profile/balance', [App\Http\Controllers\Users\ProfileController::class, 'addToBalance'])->name('addToBalance');
 
 // Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');

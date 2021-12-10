@@ -45,13 +45,23 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function balance()
+    public function balance(Request $request)
     {
         $http = new Http();
         $user = $http::get(env('API_URL') . 'users/' . '1');
+        $addBalance = false;
+        if (isset($request->addBalance)) {
+            $addBalance = true;
+        }
         return view('Users.balance', [
-            'balance' => $user['balance']
+            'balance' => $user['balance'],
+            'addBalance' => $addBalance
         ]);
+    }
+
+    public function showBalanceForm()
+    {
+        return redirect()->route('balance', ['addBalance' => true]);
     }
 
     public function addToBalance(Request $request)

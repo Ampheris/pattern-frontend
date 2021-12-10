@@ -53,6 +53,8 @@ class BikeRideController extends Controller
         $bike = $http::get(env('API_URL') . 'bikehistory/user/active/' . 1);
         $bikeRide = $http::put(env('API_URL') . 'bikehistory/stop/' . 1);
 
+        var_dump(json_decode($bike));
+        var_dump(json_decode($bikeRide));
         if (isset($bikeRide['message'])) {
             $message  = $bikeRide['message'];
             return redirect()->route('bikeride', ['bike_id' => $bike['bike_id'], 'message' => $message]);

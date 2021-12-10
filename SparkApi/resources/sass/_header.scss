@@ -1,0 +1,122 @@
+
+.navbar {
+    margin-bottom: 0 !important;
+}
+//
+.pb-4, .py-4 {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+ .navbar-nav {
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+ }
+
+ .navbar-collapse {
+     flex-basis: 0;
+ }
+
+.navbar-toggle {
+    span {
+        color: #1E272E !important;
+        background-color: #1E272E !important;
+    }
+}
+
+.navbar-brand {
+    color: #1E272E !important;
+}
+
+@media only screen and (max-width: 767px) {
+    #slide-navbar-collapse {
+      position: fixed;
+      top: 0;
+      left: 15px;
+      z-index: 3;
+      width: 280px;
+      height: 100%;
+      background-color: #ddd;
+      overflow: auto;
+    }
+
+    .menu-overlay {
+      display: none;
+      background-color: #000;
+      bottom: 0;
+      left: 0;
+      opacity: 0.5;
+      filter: alpha(opacity=50);
+      /* IE7 & 8 */
+      position: fixed;
+      right: 0;
+      top: 0;
+      z-index: 2;
+    }
+
+     .navbar .container-fluid {
+         display: block !important;
+
+     }
+
+     .navbar-nav {
+         flex-direction: column;
+     }
+
+     li {
+         a {
+             display: flex !important;
+             flex-direction: row;
+             flex-wrap: wrap;
+             align-items: center !important;
+         }
+
+         i {
+             font-size: 2em !important;
+             margin-right: 0.5em;
+         }
+     }
+}
+
+.navbar-collapse {
+    padding: 0 !important;
+    background-color: #fff !important;
+
+    ul {
+        a {
+            color: #1E272E !important;
+        }
+    }
+}
+
+.navbar-brand-mobile {
+    a {
+        color: #fff !important;
+        font-weight: 700;
+    }
+    width: 100%;
+    text-align: left;
+    font-size: 18px;
+    background-color: #171637;
+    padding: 18px;
+}
+
+.navbar-nav {
+    padding-left: 15px !important;
+}
+
+
+@media only screen and (min-width: 767px) {
+    i {
+        display: none !important;
+    }
+
+    .navbar-brand-mobile {
+        display: none;
+    }
+
+    .logout {
+        display: none !important;
+    }
+}

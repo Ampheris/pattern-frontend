@@ -1,6 +1,7 @@
 @extends('users/layouts.app')
 
 @section('content')
+<a class="back-button" href="{{ route('profile') }}"><i class="material-icons">arrow_back</i>Tillbaka</a>
 @if (isset($subscription['id']) && $subscription['cancelation_date'] == null)
 {{$subscription}}
     <form method="post" action="{{ route('endSubscription') }}">
@@ -47,7 +48,7 @@
                 <label title="Three-digits code on the back of your card">CVV
                                             <i class="fa fa-question-circle"></i>
                                         </label>
-                <input type="text" maxlength="3" minlength="3" name="csv" required class="form-control">
+                <input type="text" maxlength="3" minlength="3" placeholder="123" name="csv" required class="form-control">
               </div>
             </div>
           </div>
