@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -27,7 +28,6 @@ class ProfileController extends Controller
         $http = new Http();
         $subscription = $http::get(env('API_URL') . 'subscriptions/' . '1');
         $user = $http::get(env('API_URL') . 'users/' . '1');
-
         $user = json_decode($user);
         $subscription = json_decode($subscription, true);
         return view('users.profile', [
@@ -36,12 +36,25 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function subscription()
+    public function subscription(Request $request)
     {
         $http = new Http();
         $subscription = $http::get(env('API_URL') . 'subscriptions/' . 1);
+        $addSubscription = false;
+        $carbon = new Carbon();
+        $date = $carbon::now();
+        $subscriptionActive = false;
+        if (isset($subscription['id']) && ($subscription['cancelation_date'] == null || $subscription['renewal_date'] < $date)) {
+            $subscriptionActive = true;
+        }
+
+        if (isset($request->addSubscription)) {
+            $addSubscription = true;
+        }
         return view('users.subscription', [
-            'subscription' => $subscription
+            'subscription' => $subscription,
+            'addSubscription' => $addSubscription,
+            'subscriptionActive' => $subscriptionActive
         ]);
     }
 
@@ -49,19 +62,21 @@ class ProfileController extends Controller
     {
         $http = new Http();
         $user = $http::get(env('API_URL') . 'users/' . '1');
-        $addBalance = false;
-        if (isset($request->addBalance)) {
-            $addBalance = true;
-        }
+
         return view('users.balance', [
             'balance' => $user['balance'],
-            'addBalance' => $addBalance
+            "message" => $request['message'] ?? null
         ]);
     }
 
-    public function showBalanceForm()
+    // public function showBalanceForm()
+    // {
+    //     return redirect()->route('balance', ['addBalance' => true]);
+    // }
+
+    public function showSubscriptionPayForm()
     {
-        return redirect()->route('balance', ['addBalance' => true]);
+        return redirect()->route('subscription', ['addSubscription' => true]);
     }
 
     public function addToBalance(Request $request)
@@ -74,7 +89,7 @@ class ProfileController extends Controller
         ];
 
         $user = $http::put(env('API_URL') . 'users/' . 1, $data);
-        return redirect()->route('balance');
+        return redirect()->route('profile');
     }
 
     public function manageSubscription()

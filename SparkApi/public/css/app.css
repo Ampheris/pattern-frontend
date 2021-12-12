@@ -10098,15 +10098,15 @@ h3 {
     font-size: 2em !important;
     margin-right: 0.5em;
   }
-}
-.navbar-collapse {
-  padding: 0 !important;
-  background-color: #fff !important;
-}
-.navbar-collapse ul a {
-  color: #1E272E !important;
-}
 
+  .navbar-collapse {
+    padding: 0 !important;
+    background-color: #fff !important;
+  }
+  .navbar-collapse ul a {
+    color: #1E272E !important;
+  }
+}
 .navbar-brand-mobile {
   width: 100%;
   text-align: left;
@@ -10124,7 +10124,7 @@ h3 {
 }
 
 @media only screen and (min-width: 767px) {
-  i {
+  .navbar i {
     display: none !important;
   }
 
@@ -10250,4 +10250,38 @@ h3 {
   margin-top: 1.2rem;
   margin-bottom: 2.3rem;
   text-align: left;
+}
+
+.list-item {
+  max-width: 100% !important;
+  flex: 100% !important;
+}
+
+.list-group {
+  display: block !important;
+}
+
+.subscription-head {
+  font-size: 2em;
+  color: #171637;
+}
+
+.subscription-price {
+  font-size: 2.6em;
+  color: #05C46B;
+}
+
+.subscription-button {
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.6em 1em;
+  background-color: #171637 !important;
+  border-radius: 2px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  border-color: #171637 !important;
+}
+
+.subscription-ended {
+  color: #e20f0f;
 }

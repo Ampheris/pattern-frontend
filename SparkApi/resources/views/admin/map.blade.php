@@ -18,7 +18,7 @@ crossorigin=""></script>
 
 <script>
 
-var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.164843254715345], 13);
+var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.164843254715345], 4);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',    {
         attribution: `&copy;
@@ -31,33 +31,41 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     let chargingstations = {!! $chargingstations !!};
     let parkingspaces = {!! $parkingspaces !!};
 
-    let locationMarker = L.icon({
+    let bikeLayer = L.layerGroup();
+
+    var locationMarker = L.icon({
         iconUrl: "{{ url('img/location.png')}}",
         iconSize:     [24, 24],
         iconAnchor:   [12, 12],
         popupAnchor:  [0, 0]
     });
 
-    var greenIcon = L.icon({
-        iconUrl: "{{ url('img/icon-green.png')}}",
+    function getBikes() {
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/sparkapi/v1/bikes',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                bikes=data;
+            }
+        });
+    }
 
-        iconSize:     [24, 60], // size of the icon
-        iconAnchor:   [22, 80], // point of the icon which will correspond to marker's location
-        popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
-    });
-
-
-    for (var i = 0; i < bikes.length; i++) {
-        console.log(bikes[i].X);
-        if (bikes[i].status == 'available') {
-            var bikeId = bikes[i].id;
-            L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).addTo(map).bindPopup(
-                `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p>`
-            );
-        } else {
-            L.marker([bikes[i].X, bikes[i].Y]).addTo(map).bindPopup(
-                `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p>`
-            );
+    function drawBikes() {
+        map.removeLayer(bikeLayer);
+        bikeLayer = L.layerGroup();
+        getBikes();
+        console.log(typeof bikes);
+        if (typeof bikes !== 'undefined') {
+            for (var i = 0; i < bikes.length; i++) {
+                console.log(bikes[i].X);
+                var bikeId = bikes[i].id;
+                bikeLayer.addLayer((L.marker([bikes[i].X, bikes[i].Y]).bindPopup(
+                    `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p>`
+                )));
+            }
+            bikeLayer.addTo(map);
         }
     }
 
@@ -99,34 +107,42 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
             .openOn(map);
     }
 
-    var current_position;
+    let current_position;
 
-   function onLocationFound(e) {
-     // if position defined, then remove the existing position marker and accuracy circle from the map
-     if (current_position) {
-         map.removeLayer(current_position);
-     }
+    function geoSuccess(pos) {
+        if (typeof current_position === 'undefined') {
+            map.setView([pos.coords.latitude, pos.coords.longitude], 17);
+        }
 
-     var radius = e.accuracy / 2;
+        if (current_position) {
+               map.removeLayer(current_position);
+        }
 
-     current_position = L.marker(e.latlng, {icon: locationMarker}).addTo(map)
+        current_position = L.marker(
+            [pos.coords.latitude, pos.coords.longitude],
+            {icon: locationMarker}
+         ).addTo(map)
 
-   }
+    }
 
-   function onLocationError(e) {
-     alert(e.message);
-   }
+    function geoError(error) {
+        console.log('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
 
-   map.on('locationfound', onLocationFound);
-   map.on('locationerror', onLocationError);
+    function locate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                geoSuccess,
+                geoError
+            );
+        }
+    }
 
-   // wrap map.locate in a function
-   function locate() {
-     map.locate();
-   }
-
-   // call locate every 3 seconds... forever
-   setInterval(locate, 10000);
+     // call locate every 3 seconds... forever
+    locate();
+    setInterval(locate, 3000);
+    setInterval(drawBikes, 3000);
     map.on('click', onMapClick);
 </script>
 

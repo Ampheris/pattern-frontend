@@ -2,14 +2,8 @@
 
 @section('content')
 <a class="back-button" href="{{ route('profile') }}"><i class="material-icons">arrow_back</i>Tillbaka</a>
-<div class="container">
-    <p>Saldo: {{ $balance }} kr</p>
-    @if($addBalance == false)
-    <a href="{{ route('showBalanceForm')}}">Fyll på</a>
-    @endif
-</div>
+
 <!-- FOR DEMO PURPOSE -->
-@if($addBalance)
 <div class="container py-5">
 
 <div class="row">
@@ -19,7 +13,11 @@
     <div class="tab-content">
       <!-- credit card info-->
       <div id="nav-tab-card" class="tab-pane fade show active in">
-        <!-- <p class="alert alert-success">Some text success or error</p> -->
+         @if (isset($message))
+         <h4>Du har för lite pengar på ditt saldo. Fyll på och avsluta sen åkturen.</h4>
+         @else
+         <h4>Fyll på saldo</h4>
+         @endif
         <form role="form" method="post" action="{{ route('addToBalance') }}">
         @csrf
         <div class="form-group">
@@ -65,5 +63,4 @@
 </div>
 </div>
 </div>
-@endif
 @endsection

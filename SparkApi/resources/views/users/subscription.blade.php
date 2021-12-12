@@ -2,14 +2,49 @@
 
 @section('content')
 <a class="back-button" href="{{ route('profile') }}"><i class="material-icons">arrow_back</i>Tillbaka</a>
-@if (isset($subscription['id']) && $subscription['cancelation_date'] == null)
-{{$subscription}}
-    <form method="post" action="{{ route('endSubscription') }}">
-    @csrf
-        <input type="submit" name="submit" value="Avsluta subscription">
-        <input type="hidden" name="subscriptionId" value="{{ $subscription['id'] }}">
-    </form>
-@else
+@if (isset($subscription['id']))
+    <div class="container mt-5 mb-5">
+        <div class="row g-2">
+            <div class="col-md-6">
+                <div class="card bg-white p-3 px-4 d-flex justify-content-center">
+                    <h5 class="subscription-head">Ditt månadskort</h5>
+                    <div class="mt-4">
+                        <div class="d-flex justify-content-between align-items-center"> <span>Period start</span> <span>{{ $subscription['start_date']}}</span> </div>
+                        <div class="d-flex justify-content-between align-items-center"> <span>Ska förnyas</span> <span>{{ $subscription['renewal_date']}}</span> </div>
+                    </div>
+                    <div class="mt-4">
+                        @if($subscriptionActive == false)
+                        <h3 class="subscription-ended">Din prenumeration har avslutats och är giltig fram till {{ $subscription['renewal_date']}}</h3>
+                        @else
+                        <form method="post" action="{{ route('endSubscription') }}">
+                        @csrf
+                            <input type="submit" class="btn btn-danger subscription-button" name="submit" value="Avsluta prenumeration">
+                            <input type="hidden" name="subscriptionId" value="{{ $subscription['id'] }}">
+                        </form>
+                        @endif
+                </div>
+            </div>
+        </div>
+    </div>
+@elseif($addSubscription == false)
+<div class="container mt-5 mb-5">
+    <div class="row g-2">
+        <div class="col-md-6">
+            <div class="card bg-white p-3 px-4 d-flex justify-content-center">
+                <h5 class="subscription-head">Månadskort</h5> <span class="subscription-price">19sek/månad</span>
+                <div class="mt-4">
+                    <div class="d-flex justify-content-between align-items-center"> <span>Åk hur mycket du vill</span> <span>Betala varje månad</span> </div>
+                    <div class="d-flex justify-content-between align-items-center"> <span>Hur länge du vill</span> <span>Fast pris</span> </div>
+                    <div class="d-flex justify-content-between align-items-center"> <span></span> <span>Inga tillägg</span> </div>
+                </div>
+                <div class="mt-4"> <a href="{{ route('showSubscriptionPayForm')}}" class="btn btn-danger subscription-button">Köp månadskort</a> </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+@if($addSubscription)
 <!-- FOR DEMO PURPOSE -->
 <div class="container py-5">
 
@@ -20,7 +55,7 @@
     <div class="tab-content">
       <!-- credit card info-->
       <div id="nav-tab-card" class="tab-pane fade show active in">
-        <p class="alert alert-success">Some text success or error</p>
+        <h4>SparkiFy månadsprenumeration</h4>
         <form role="form" method="post" action="{{ route('manageSubscription') }}">
         @csrf
           <div class="form-group">

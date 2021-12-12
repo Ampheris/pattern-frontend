@@ -26,21 +26,21 @@ Route::get('/', [App\Http\Controllers\Users\MapController::class, 'index'])->nam
  * bikeride Route: You get here after you choose a bike on the map. If the bike is available you can click on start a ride.
  */
 Route::get('/bikeride/{bike_id}', [App\Http\Controllers\Users\BikeRideController::class, 'index'])->name('bikeride');
-Route::post('/startbikeride', [App\Http\Controllers\Users\BikeRideController::class, 'startBikeRide'])->name('startBikeRide');
+Route::get('/startbikeride/{bike_id}', [App\Http\Controllers\Users\BikeRideController::class, 'startBikeRide'])->name('startBikeRide');
 Route::get('/stopbikeride', [App\Http\Controllers\Users\BikeRideController::class, 'stopBikeRide'])->name('stopBikeRide');
 
 /*
  * history Route: Shows a list of the users bikehistory
  */
 Route::get('/history', [App\Http\Controllers\Users\HistoryController::class, 'index'])->name('history');
-Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
+// Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
 
 
 /*
  * order Route: Shows a list of the users orders
  */
 Route::get('/orders', [App\Http\Controllers\Users\OrderController::class, 'index'])->name('orders');
-Route::get('/orders/{orderId}', [App\Http\Controllers\Users\OrderController::class, 'showSingleOrder'])->name('singleOrder');
+// Route::get('/orders/{orderId}', [App\Http\Controllers\Users\OrderController::class, 'showSingleOrder'])->name('singleOrder');
 
 
 /*
@@ -50,8 +50,9 @@ Route::get('/profile', [App\Http\Controllers\Users\ProfileController::class, 'in
 Route::get('/profile/subscription', [App\Http\Controllers\Users\ProfileController::class, 'subscription'])->name('subscription');
 Route::post('/profile/subscription', [App\Http\Controllers\Users\ProfileController::class, 'manageSubscription'])->name('manageSubscription');
 Route::post('/profile/subscription/stop', [App\Http\Controllers\Users\ProfileController::class, 'endSubscription'])->name('endSubscription');
+Route::get('/profile/subscription-form', [App\Http\Controllers\Users\ProfileController::class, 'showSubscriptionPayForm'])->name('showSubscriptionPayForm');
 Route::get('/profile/balance', [App\Http\Controllers\Users\ProfileController::class, 'balance'])->name('balance');
-Route::get('/profile/balance-form', [App\Http\Controllers\Users\ProfileController::class, 'showBalanceForm'])->name('showBalanceForm');
+// Route::get('/profile/balance-form', [App\Http\Controllers\Users\ProfileController::class, 'showBalanceForm'])->name('showBalanceForm');
 Route::post('/profile/balance', [App\Http\Controllers\Users\ProfileController::class, 'addToBalance'])->name('addToBalance');
 
 // Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
