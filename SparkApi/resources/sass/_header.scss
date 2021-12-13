@@ -77,18 +77,20 @@
              margin-right: 0.5em;
          }
      }
+
+     .navbar-collapse {
+         padding: 0 !important;
+         background-color: #fff !important;
+
+         ul {
+             a {
+                 color: #1E272E !important;
+             }
+         }
+     }
 }
 
-.navbar-collapse {
-    padding: 0 !important;
-    background-color: #fff !important;
 
-    ul {
-        a {
-            color: #1E272E !important;
-        }
-    }
-}
 
 .navbar-brand-mobile {
     a {
@@ -108,7 +110,7 @@
 
 
 @media only screen and (min-width: 767px) {
-    i {
+    .navbar i {
         display: none !important;
     }
 

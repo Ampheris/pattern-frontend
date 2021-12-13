@@ -17,34 +17,44 @@ class BikeRideController extends Controller
     //     $this->middleware('auth');
     // }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index(Request $request, $bikeId)
+    // /**
+    //  * Show the application dashboard.
+    //  *
+    //  * @return \Illuminate\Contracts\Support\Renderable
+    //  */
+    // public function index(Request $request, $bikeId)
+    // {
+    //     $http = new Http();
+    //     $bike = $http::get(env('API_URL') . 'bikes/' . $bikeId);
+    //
+    //     return view('users.bikeride', [
+    //         "bike" => $bike
+    //     ]);
+    // }
+
+    public function index(Request $request, $bikerideId)
     {
         $http = new Http();
-        $bike = $http::get(env('API_URL') . 'bikes/' . $bikeId);
-
+        // $bike = $http::get(env('API_URL') . 'bikes/' . $bikeId);
+        $bikeride = $http::get(env('API_URL') . 'bikehistory/' . $bikerideId);
+        // $bikeride = json_decode($bikeride);
+        $bikeride = json_decode($bikeride, true);
         return view('users.bikeride', [
-            "bike" => $bike,
-            "message" => $request['message'] ?? null
+            "bikeride" => $bikeride[0]
         ]);
     }
 
-    public function startBikeRide(Request $request)
+    public function startBikeRide($bikeId)
     {
         $http = new Http();
-        $bike = $http::get(env('API_URL') . 'bikes/' . $request->input('bike'));
-
+        $bike = $http::get(env('API_URL') . 'bikes/' . $bikeId);
         $data = [
             'customer_id' => 1,
             'bike_id' => $bike['id']
         ];
 
         $http::post(env('API_URL') . 'bikehistory/start', $data);
-        return redirect()->route('bikeride', ['bike_id' => $bike['id']]);
+        return redirect()->route('map');
     }
 
     public function stopBikeRide()
@@ -57,9 +67,9 @@ class BikeRideController extends Controller
         var_dump(json_decode($bikeRide));
         if (isset($bikeRide['message'])) {
             $message  = $bikeRide['message'];
-            return redirect()->route('bikeride', ['bike_id' => $bike['bike_id'], 'message' => $message]);
+            return redirect()->route('addToBalance', ['message' => $message]);
         }
             // $message  = null;
-        return redirect()->route('bikeride', ['bike_id' => $bike['bike_id']]);
+        return redirect()->route('bikeride', $bikeRide['id']);
     }
 }

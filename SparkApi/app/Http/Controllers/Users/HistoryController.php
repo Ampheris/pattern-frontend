@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Carbon\Carbon;
 
 class HistoryController extends Controller
 {
@@ -26,10 +27,17 @@ class HistoryController extends Controller
     {
         $http = new Http();
         $history = $http::get(env('API_URL') . 'bikehistory/user/' . '1');
-
         $history = json_decode($history, true);
+
+        foreach ($history as $key => $value) {
+            $time = Carbon::parse($value['stop_time'])->diffInSeconds(Carbon::parse($value['start_time']));
+            $history[$key]['time'] = $time / 60;
+            $date = Carbon::parse($value['start_time'])->format('Y-d-m');
+            $history[$key]['date'] = $date;
+        }
+
         return view('users.history', [
-            "history" => $history
+            'history' => $history
         ]);
     }
 

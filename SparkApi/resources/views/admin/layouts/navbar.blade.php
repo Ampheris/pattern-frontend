@@ -14,8 +14,7 @@
     <div class="collapse navbar-collapse" id="slide-navbar-collapse">
       <ul class="nav navbar-nav">
         <li><a href="{{ route('cities') }}">Alla städer</a></li>
-        <li><a href="{{ route('users') }}">Alla kunder</a></li>
-        <li><a href="{{ route('bikes') }}">Alla sparkcyklar</a></li>
+        
         <li><a href="#">Inställningar</a></li>
       </ul>
     </div>
