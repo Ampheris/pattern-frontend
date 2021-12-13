@@ -1,10 +1,42 @@
+ ------ --------------------------------------------------------------------- 
+ [32m Line [39m [32m app\Http\Controllers\Admin\BikesController.php                      [39m 
+ ------ --------------------------------------------------------------------- 
+[39;49m  19     Method App\Http\Controllers\Admin\BikesController::index() should[39;49m[39;49m    [39;49m
+[39;49m         [39;49m[39;49mreturn Illuminate\Http\Response but returns[39;49m[39;49m                          [39;49m
+[39;49m         [39;49mIlluminate\Contracts\View\Factory|Illuminate\Contracts\View\View.    
+[39;49m  79     Method App\Http\Controllers\Admin\BikesController::show() should[39;49m[39;49m     [39;49m
+[39;49m         [39;49mreturn Illuminate\Http\Response but return statement is missing.     
+  89     PHPDoc tag @param references unknown parameter: $id                  
+[39;49m  93     Method App\Http\Controllers\Admin\BikesController::ShowSingleBike()[39;49m[39;49m  [39;49m
+[39;49m         [39;49m[39;49mshould return Illuminate\Http\Response but returns[39;49m[39;49m                   [39;49m
+[39;49m         [39;49mIlluminate\Contracts\View\Factory|Illuminate\Contracts\View\View.    
+[39;49m  107    Method App\Http\Controllers\Admin\BikesController::edit() should[39;49m[39;49m     [39;49m
+[39;49m         [39;49mreturn Illuminate\Http\Response but return statement is missing.     
+[39;49m  119    Method App\Http\Controllers\Admin\BikesController::update() should[39;49m[39;49m   [39;49m
+[39;49m         [39;49mreturn Illuminate\Http\Response but return statement is missing.     
+[39;49m  130    Method App\Http\Controllers\Admin\BikesController::destroy() should[39;49m[39;49m  [39;49m
+[39;49m         [39;49mreturn Illuminate\Http\Response but return statement is missing.     
+ ------ --------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+ [32m Line [39m [32m app\Http\Controllers\Admin\UsersController.php                      [39m 
+ ------ --------------------------------------------------------------------- 
+[39;49m  19     Method App\Http\Controllers\Admin\UsersController::index() should[39;49m[39;49m    [39;49m
+[39;49m         [39;49m[39;49mreturn Illuminate\Http\Response but returns[39;49m[39;49m                          [39;49m
+[39;49m         [39;49mIlluminate\Contracts\View\Factory|Illuminate\Contracts\View\View.    
+  90     PHPDoc tag @param references unknown parameter: $id                  
+[39;49m  94     Method App\Http\Controllers\Admin\UsersController::showSingleUser()[39;49m[39;49m  [39;49m
+[39;49m         [39;49m[39;49mshould return Illuminate\Http\Response but returns[39;49m[39;49m                   [39;49m
+[39;49m         [39;49mIlluminate\Contracts\View\Factory|Illuminate\Contracts\View\View.    
+ ------ --------------------------------------------------------------------- 
+
  ------ --------------------------------------------------------------- 
  [32m Line [39m [32m app\Http\Controllers\Auth\RegisterController.php              [39m 
  ------ --------------------------------------------------------------- 
   66     Call to an undefined static method App\Models\User::create().  
  ------ --------------------------------------------------------------- 
 
-[37;41m                                                                                             [39;49m
-[37;41m [ERROR] Found 1 error                                                                       [39;49m
-[37;41m                                                                                             [39;49m
+[37;41m                                                                              [39;49m
+[37;41m [ERROR] Found 11 errors                                                      [39;49m
+[37;41m                                                                              [39;49m
 

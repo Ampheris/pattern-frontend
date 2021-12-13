@@ -1,0 +1,11 @@
+
+FILE: ...patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php
+-------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------
+ 89 | ERROR | Method name "BikesController::ShowSingleBike" is not in camel
+    |       | caps format
+-------------------------------------------------------------------------------
+
+Time: 11.98 secs; Memory: 8MB
+
