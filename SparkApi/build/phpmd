@@ -1,0 +1,17 @@
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:17	Avoid using static access to class '\Illuminate\Support\Facades\Http' in method 'index'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:77	Avoid variables with short names like $id. Configured minimum length is 3.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:77	Avoid unused parameters such as '$id'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:89	The method ShowSingleBike is not named in camelCase.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:91	Avoid using static access to class '\Illuminate\Support\Facades\Http' in method 'ShowSingleBike'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:105	Avoid variables with short names like $id. Configured minimum length is 3.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:105	Avoid unused parameters such as '$id'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:117	Avoid variables with short names like $id. Configured minimum length is 3.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:117	Avoid unused parameters such as '$request'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:117	Avoid unused parameters such as '$id'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:128	Avoid variables with short names like $id. Configured minimum length is 3.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php:128	Avoid unused parameters such as '$id'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\UsersController.php:17	Avoid using static access to class '\Illuminate\Support\Facades\Http' in method 'index'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Admin\UsersController.php:92	Avoid using static access to class '\Illuminate\Support\Facades\Http' in method 'showSingleUser'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Users\BikeRideController.php:35	Avoid unused parameters such as '$request'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Users\HistoryController.php:33	Avoid using static access to class '\Carbon\Carbon' in method 'index'.
+C:\Users\Admin\dbwebb-kurser\patterns\frontend\SparkApi\app\Http\Controllers\Users\LoginController.php:27	Avoid using static access to class '\Illuminate\Support\Facades\Http' in method 'login'.
