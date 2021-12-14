@@ -3,16 +3,20 @@
 @section('content')
 <a href="{{ route('chargingstations') }}">Go back</a>
 
-
-<div class="card" style="width: 20em; margin:auto">
-    <div class="card-body">
-      <p class="card-text"><b>ID</b>: {{ $chargingstations["id"] }}</p>
-      <p class="card-text"><b>Namn</b>: {{ $chargingstations["name"] }}</p>
-      <p class="card-text"><b>X,Y</b>: {{ $chargingstations["X"] }}, {{ $chargingstations["Y"] }}</p>
-	  <p class="card-text"><b>Radius</b>: {{ $chargingstations["radius"] }}</p>
-    </div>
+<div class="card" style="width: 20em; margin:auto; padding:1em;">
+	<h4> Sparcyklar på laddstationen </h4>
+	@if ($bikes != NULL)
+	<p>Totalt: {{ count($bikes) }}</p>
+	@foreach ($bikes as $bike)
+		<div class="card-body">
+			<p class="card-text"><b>ID</b>: {{ $bike["id"] }} <b>Namn</b>: {{ $bike["name"] }}</p>
+		</div>
+	@endforeach
+	@else
+		<p> Det finns inga sparkcyklar här </p>
+	</div>
+	@endif
 </div>
-
 
 <form action="{{ route('storeUpdatedChargingstations') }}" method="post">
 	@csrf
@@ -46,5 +50,6 @@
 		<button type="submit" class="btn btn-primary">Ändra laddstationen</button>
 	</div>
 </form>
+
 
 @endsection

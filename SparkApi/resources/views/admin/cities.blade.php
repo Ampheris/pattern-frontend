@@ -7,9 +7,20 @@
     </form>
 </nav>
 
-
-<h1>Alla Städer </h1>
-@foreach ($cities as $city)
-    <p><a href="{{ route('showSingleCity', ['cityId' => $city['id']])}} "> {{ $city["city"] }} </a></p>
-@endforeach
+<h1 class="alltitle">Alla Städer</h1>
+<div class="container">
+    <div class="row">
+        @foreach ($cities as $city)
+        <div class="boxeslist">
+            <div class="col">
+                <p><b>Namn</b>: {{ $city["city"] }}</p>
+                <p><b>ID</b>: {{ $city["id"] }}</p>
+                <p><b>X,Y</b>: {{ $city["X"] }}, {{ $city["Y"] }}</p>
+                <p><b>Radius</b>: {{ round($city["radius"], 5) }}</p>
+                <p><a class="boxlink" href="{{ route('showSingleCity', ['cityId' => $city['id']])}} "> Ändra </a></p>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
 @endsection

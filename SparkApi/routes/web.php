@@ -72,6 +72,12 @@ Route::post('/profile/balance', [App\Http\Controllers\Users\ProfileController::c
  Route::get('/admin', [App\Http\Controllers\Admin\MapController::class, 'index'])->name('adminMap');
 
 /*
+ * login admin route
+ */
+Route::get('/admin/login', [App\Http\Controllers\Admin\LoginController::class, 'index'])->name('login');
+
+
+/*
 //  * cities admin route: Shows a list of the cities and edit or add a city.
 */
 Route::get('/admin/cities', [App\Http\Controllers\Admin\CitiesController::class, 'index'])->name('cities');

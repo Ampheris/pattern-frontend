@@ -36,9 +36,12 @@ class BikesController extends Controller
     {
         $http = new Http();
         $bikes = $http::get(env('API_URL') . 'bikes/' . $bikeId);
+        $chargingstations= $http::get(env('API_URL') . 'chargingstations');
+        $chargingstations = json_decode($chargingstations, true);
         $bikes = json_decode($bikes, true);
         return view('admin.showSinglebike', [
-            "bikes" => $bikes
+            "bikes" => $bikes,
+            "chargingstations" => $chargingstations
         ]);
     }
     
@@ -52,10 +55,21 @@ class BikesController extends Controller
      */
     public function storeNewBike(Request $request)
     {
+        if ($request->input('laddstation') == 'null') {
+            $x = $request->input('X');
+            $y = $request->input('Y');
+        } else {
+            $http = new Http();
+            $chargingstations = $http::get(env('API_URL') . 'chargingstations/' . $request->input('laddstation'));
+            $chargingstations = json_decode($chargingstations, true);
+            $x = $chargingstations["X"];
+            $y = $chargingstations["Y"];
+        }
+
         $data = [
             'id' => $request->input('bikeId'),
-            'X' => $request->input('X'),
-            'Y' => $request->input('Y'),
+            'X' => $x,
+            'Y' => $y,
             'status' => $request->input('status'),
             'battery' => $request->input('battery')
         ];

@@ -43,6 +43,17 @@
     </div>
 
     <div class="form-group">
+        <label for="laddstation">Välj Laddstation</label>
+
+        <select name="laddstation" id="laddstation" class="form-control">
+            <option value="null">Nej tack.</option>
+            @foreach ($chargingstations as $chargingstation)
+            <option value="{{ $chargingstation["id"] }}"> {{ $chargingstation["name"] }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="form-group">
         <label for="X">X-Position</label>
         <input type="number" name="X" class="form-control" id="X" step="0.01" value="{{ $bikes["X"] }}">
     </div>

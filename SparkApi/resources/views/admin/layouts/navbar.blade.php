@@ -18,7 +18,6 @@
         <li><a href="{{ route('bikes') }}">Sparkcyklar</a></li>
         <li><a href="{{ route('parking') }}">Parkering</a></li>
         <li><a href="{{ route('chargingstations') }}">Laddningsstationer</a></li>
-        <li><a href="#">Inställningar</a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse -->

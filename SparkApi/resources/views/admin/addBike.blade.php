@@ -16,9 +16,11 @@
         <div class="error">
             <p>{{ $error }}</p>
         </div>
+        <label for="name">Namn</label>
         <input type="text" name="name" class="form-control" id="name" aria-describedby="name">
     </div>
     <div class="form-group">
+        <label for="id">Välj stad du vill placera sparkcykeln i</label>
         <select name="id" id="id" class="form-control">
             @foreach ($cities as $city)
             <option value="{{ $city["id"] }}"> {{ $city["city"] }}</option>

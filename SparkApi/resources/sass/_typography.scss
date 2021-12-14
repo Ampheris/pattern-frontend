@@ -1,3 +1,24 @@
 .error {
     color: $red;
 }
+
+
+
+html body {
+    font-family: 'Roboto', sans-serif;;
+}
+
+
+.alltitle {
+    text-align: center;
+}
+
+.boxlink {
+    color: #05c46b;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.boxlink a:hover {
+    color: #1e272e;
+}

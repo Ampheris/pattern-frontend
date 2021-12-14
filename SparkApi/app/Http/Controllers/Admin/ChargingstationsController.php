@@ -48,10 +48,13 @@ class ChargingstationsController extends Controller
     public function showSingleChargingstation($chargingstationId)
     {
         $http = new Http();
-        $chargingstations = $http::get(env('API_URL') . 'chargingstations/' . $chargingstationId);
+        $chargingstations = $http::get(env('API_URL') . 'chargingstations/' . $chargingstationId); 
+        $bikes = $http::get(env('API_URL') . 'chargingstation/bikes/' . $chargingstationId);
+        $bikes = json_decode($bikes, true);
         $chargingstations = json_decode($chargingstations, true);
         return view('admin.showSingleChargingstation', [
-            "chargingstations" => $chargingstations
+            "chargingstations" => $chargingstations,
+            "bikes" => $bikes
         ]);
     }
 
