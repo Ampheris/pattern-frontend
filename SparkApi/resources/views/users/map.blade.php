@@ -1,7 +1,6 @@
 @extends('users/layouts.app')
 
 @section('content')
-{{ $renew }}
 <div class="map" id="map">
 </div>
 @if(isset($currentBikeRide['id']))
@@ -32,9 +31,9 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     let cities = {!! $cities !!};
     let chargingstations = {!! $chargingstations !!};
     let parkingspaces = {!! $parkingspaces !!};
-    // let currentBikeRide = {!! $currentBikeRide !!};
+    let currentBikeRide = {!! $currentBikeRide !!};
+    let bike = {!! $bike !!};
 
-    // console.log(currentBikeRide);
     let bikeLayer = L.layerGroup();
 
     let locationMarker = L.icon({
@@ -42,6 +41,16 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
         iconSize:     [24, 24],
         iconAnchor:   [12, 12],
         popupAnchor:  [0, 0]
+    });
+
+    // red bike icon
+    var redIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
     });
 
     // green bike icon
@@ -54,14 +63,20 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
         shadowSize: [41, 41]
     });
 
-    for (var i = 0; i < bikes.length; i++) {
-        console.log(bikes[i].X);
-        if (bikes[i].status == 'available') {
-            var bikeId = bikes[i].id;
-            bikeLayer.addLayer((L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).bindPopup(
-                `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p><a href='{{url('/startbikeride')}}/${bikes[i].id}'>Starta åktur</a>`
-            )));
+    if (currentBikeRide === 0) {
+        for (var i = 0; i < bikes.length; i++) {
+            console.log(bikes[i].X);
+            if (bikes[i].status == 'available') {
+                var bikeId = bikes[i].id;
+                bikeLayer.addLayer((L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).bindPopup(
+                    `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p><a href='{{url('/startbikeride')}}/${bikes[i].id}'>Starta åktur</a>`
+                )));
+            }
         }
+    } else {
+        bikeLayer.addLayer((L.marker([bike.X, bike.Y], {icon: redIcon}).bindPopup(
+            `<p>${bike.status}</p><p>Batteri: ${bike.battery}</p>`
+        )));
     }
     bikeLayer.addTo(map);
 

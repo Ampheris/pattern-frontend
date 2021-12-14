@@ -10146,7 +10146,10 @@ h3 {
     width: 100%;
   }
 }
-<<<<<<< HEAD
+.error {
+  color: #e3342f;
+}
+
 .leaflet-touch {
   border: none;
 }
@@ -10285,8 +10288,8 @@ h3 {
 
 .subscription-ended {
   color: #e20f0f;
-=======
+}
+
 .error {
-  border-style: 2px solid #e3342f;
->>>>>>> loginBranch
+  color: #e3342f;
 }

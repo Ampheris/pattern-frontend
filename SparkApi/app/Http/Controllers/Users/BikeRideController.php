@@ -60,10 +60,10 @@ class BikeRideController extends Controller
     public function stopBikeRide()
     {
         $http = new Http();
-        $bike = $http::get(env('API_URL') . 'bikehistory/user/active/' . 1);
+        // $bike = $http::get(env('API_URL') . 'bikehistory/user/active/' . 1);
         $bikeRide = $http::put(env('API_URL') . 'bikehistory/stop/' . 1);
 
-        var_dump(json_decode($bike));
+        // var_dump(json_decode($bike));
         var_dump(json_decode($bikeRide));
         if (isset($bikeRide['message'])) {
             $message  = $bikeRide['message'];

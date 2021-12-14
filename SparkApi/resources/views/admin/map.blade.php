@@ -30,6 +30,7 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     let cities = {!! $cities !!};
     let chargingstations = {!! $chargingstations !!};
     let parkingspaces = {!! $parkingspaces !!};
+    let apiUrl = ({!! json_encode($apiUrl) !!});
 
     let bikeLayer = L.layerGroup();
 
@@ -63,7 +64,7 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     function getBikes() {
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:8080/sparkapi/v1/bikes',
+            url: apiUrl + 'bikes',
             dataType: 'json',
             success: function (data) {
                 console.log(data);

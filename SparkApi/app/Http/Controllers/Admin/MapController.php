@@ -34,7 +34,8 @@ class MapController extends Controller
             "bikes" => $bikes,
             "cities" => $cities,
             "chargingstations" => $chargingstations,
-            "parkingspaces" => $parkingspaces
+            "parkingspaces" => $parkingspaces,
+            "apiUrl" => env('API_URL')
         ]);
     }
 }
