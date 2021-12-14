@@ -2,27 +2,38 @@
 @extends('admin/layouts.app')
 @section('content')
 <a href="{{ route('cities') }}">Go back</a>
-<form action="">
-    {{ method_field('PUT') }}
-    
-    {!! csrf_field() !!}
+
+
+<div class="card" style="width: 20em; margin:auto">
+    <div class="card-body">
+      {{-- <h5 class="card-title">Card title</h5> --}}
+      <p class="card-text"><b>ID</b>: {{ $city["id"] }}</p>
+      <p class="card-text"><b>Namn</b>: {{ $city["city"] }}</p>
+      <p class="card-text"><b>Radius</b>: {{ $city["radius"] }}</p>
+      <p class="card-text"><b>X,Y</b>: {{ $city["X"] }}, {{ $city["Y"] }}</p>
+    </div>
+</div>
+
+
+<form action="{{ route('storeNewCity') }}" method="post">
     @csrf
-    
-    @if (count($errors) > 0)
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    @endif
+
     <div class="form-group">
         <h1>Ändra {{ $city["city"] }}</h1>
         <input type="hidden" id="cityId" name="cityId" value="{{ $city["id"] }}">
-        <label for="radius">Change radius</label>
-        <input type="number" id="radius" class="form-control" name="radius" step="0.01">
+
+        
+        <label for="X">X-Position</label>
+        <input type="number" name="X" class="form-control" id="X" step="0.01" value="{{ $city["X"] }}">
+        
+        <label for="Y">Y-Position</label>
+        <input type="number" name="Y" class="form-control" id="Y" step="0.01" value="{{ $city["Y"] }}">
+
+        <label for="radius">Radius</label>
+        <input type="number" id="radius" class="form-control" name="radius" step="0.01" value="{{ $city["radius"] }}">
     </div>
-    
     <div class="form-group">
+
         <button type="submit" class="btn btn-primary">Ändra staden</button>
     </div>
 </form>

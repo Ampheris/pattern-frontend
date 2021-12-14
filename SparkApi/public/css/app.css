@@ -10089,3 +10089,6 @@ h3 {
     width: 100%;
   }
 }
+.error {
+  border-style: 2px solid #e3342f;
+}

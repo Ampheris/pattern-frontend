@@ -70,28 +70,52 @@ Route::post('/profile/balance', [App\Http\Controllers\Users\ProfileController::c
  Route::get('/admin', [App\Http\Controllers\Admin\MapController::class, 'index'])->name('adminMap');
 
 /*
- * cities admin route: Shows a list of the cities and edit or add a city.
+//  * cities admin route: Shows a list of the cities and edit or add a city.
 */
 Route::get('/admin/cities', [App\Http\Controllers\Admin\CitiesController::class, 'index'])->name('cities');
-Route::get('/admin/cities/create', [App\Http\Controllers\Admin\CitiesController::class, 'create'])->name('create');
-Route::post('/admin/cities', [App\Http\Controllers\Admin\CitiesController::class, 'store'])->name('store');
+Route::post('/admin/cities', [App\Http\Controllers\Admin\CitiesController::class, 'storeCity'])->name('storeCity');
+Route::get('/admin/cities/create', [App\Http\Controllers\Admin\CitiesController::class, 'createCity'])->name('createCity');
 
-Route::get('/admin/cities/change/{cityId}', [App\Http\Controllers\Admin\CitiesController::class, 'showSingleCity'])->name('showSingleCity');
+Route::get('/admin/cities/update/{cityId}', [App\Http\Controllers\Admin\CitiesController::class, 'showSingleCity'])->name('showSingleCity');
+Route::post('/admin/cities/update', [App\Http\Controllers\Admin\CitiesController::class, 'storeNewCity'])->name('storeNewCity');
 
 
 /*
  * Admin user route
- */
+*/
 Route::get('/admin/users', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('users');
 Route::get('/admin/user', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('users');
 
 
 /*
  * Admin bike route
- */
+*/
 Route::get('/admin/bikes', [App\Http\Controllers\Admin\BikesController::class, 'index'])->name('bikes');
+Route::get('/admin/bikes/create', [App\Http\Controllers\Admin\BikesController::class, 'createBike'])->name('createBike');
 Route::get('/admin/bikes/{bikeId}', [App\Http\Controllers\Admin\BikesController::class, 'showSingleBike'])->name('showSingleBike');
+Route::post('/admin/bikes/update', [App\Http\Controllers\Admin\BikesController::class, 'storeNewBike'])->name('storeNewBike');
+Route::post('/admin/bikes/delete', [App\Http\Controllers\Admin\BikesController::class, 'destroyBike'])->name('destroyBike');
+Route::post('/admin/bikes/create', [App\Http\Controllers\Admin\BikesController::class, 'storeBike'])->name('storeBike');
 
+
+/*
+ * Admin Parkingspace route
+*/
+Route::get('/admin/parkingspace', [App\Http\Controllers\Admin\ParkingController::class, 'index'])->name('parking');
+Route::get('/admin/parkingspace/create', [App\Http\Controllers\Admin\ParkingController::class, 'createParkingspace'])->name('createParkingspace');
+Route::get('/admin/parkingspace/{parkingId}', [App\Http\Controllers\Admin\ParkingController::class, 'showSingleParkingspace'])->name('showSingleParkingspace');
+Route::post('/admin/parkingspace/update', [App\Http\Controllers\Admin\ParkingController::class, 'storeUpdatedParkingspace'])->name('storeUpdatedParkingspace');
+Route::post('/admin/parkingspace/create', [App\Http\Controllers\Admin\ParkingController::class, 'storeNewParkingspace'])->name('storeNewParkingspace');
+
+
+/*
+ * Admin Chargingstation route
+*/
+Route::get('/admin/chargingstations', [App\Http\Controllers\Admin\ChargingstationsController::class, 'index'])->name('chargingstations');
+Route::get('/admin/chargingstations/create', [App\Http\Controllers\Admin\ChargingstationsController::class, 'createChargingstation'])->name('createChargingstation');
+Route::get('/admin/chargingstations/{chargingstationId}', [App\Http\Controllers\Admin\ChargingstationsController::class, 'showSingleChargingstation'])->name('showSingleChargingstation');
+Route::post('/admin/chargingstations/update', [App\Http\Controllers\Admin\ChargingstationsController::class, 'storeUpdatedChargingstations'])->name('storeUpdatedChargingstations');
+Route::post('/admin/chargingstations/create', [App\Http\Controllers\Admin\ChargingstationsController::class, 'storeNewChargingstation'])->name('storeNewChargingstation');
 
 
 Auth::routes();

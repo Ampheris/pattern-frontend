@@ -1,14 +1,16 @@
 @extends('admin/layouts.app')
 @section('content')
-<a href="{{ route('cities') }}">Go back</a>
-<form method="post" action="{{ route('storeCity') }}">
+<a href="{{ route('chargingstations') }}">Go back</a>
+
+
+<form method="post" action="{{ route('storeNewChargingstation') }}">
     @csrf
     <div class="form-group">
-        <h1>Lägg till en stad </h1>
-        <label for="city">Namn på staden</label>
-        <input type="text" name="city" class="form-control" id="city" aria-describedby="city">
-        {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+        <h1>Lägg till en laddstation</h1>
+        <label for="name">Namn på laddstationen</label>
+        <input type="text" name="name" class="form-control" id="name" aria-describedby="name">
     </div>
+
     <div class="form-group">
         <label for="X">X-Position</label>
         <input type="number" name="X" class="form-control" id="X" step="0.01">
@@ -22,7 +24,7 @@
         <input type="number" name="radius" class="form-control" id="radius" step="0.01">
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Lägg till stad</button>
+        <button type="submit" class="btn btn-primary">Lägg till laddstation</button>
     </div>
 </form>
 @endsection

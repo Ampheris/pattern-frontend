@@ -24,7 +24,8 @@ class LoginController extends Controller
      */
     public function login()
     {
-        $login = Http::get(env('API_URL') . "login/github");
+        $http = new Http();
+        $login = $http::get(env('API_URL') . "login/github");
         return view('Users.loginGithub' , [
             'login' => $login
         ]);

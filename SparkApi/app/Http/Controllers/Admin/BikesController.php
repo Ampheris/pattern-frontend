@@ -11,123 +11,141 @@ class BikesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
-        $bikes = Http::get(env('API_URL') . 'bikes');
+        $http = new Http();
+        $bikes = $http::get(env('API_URL') . 'bikes');
         $bikes = json_decode($bikes, true);
         return view('admin.bikes', [
             "bikes" => $bikes,
         ]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    // public function create()
-    // {
-    //     $cities = Http::get(env('API_URL') . 'cities');
-    //     $cities = json_decode($cities, true);
-    //     return view('admin.addCity', [
-    //         "cities" => $cities,
-    //     ]);
-    // }
 
+    
+    
     /**
-     * Display a listing of the resource.
+     * Display the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param  int  $bikeId
+     *
+     * @return \Illuminate\Contracts\View\View
      */
-    // public function changeACity()
-    // {
-    //     $cities = Http::get(env('API_URL') . 'cities');
-    //     $cities = json_decode($cities, true);
-    //     return view('admin.changeACity', [
-    //         "cities" => $cities,
-    //     ]);
-    // }
+    public function showSingleBike($bikeId)
+    {
+        $http = new Http();
+        $bikes = $http::get(env('API_URL') . 'bikes/' . $bikeId);
+        $bikes = json_decode($bikes, true);
+        return view('admin.showSinglebike', [
+            "bikes" => $bikes
+        ]);
+    }
+    
 
+    
     /**
-     * Store a newly created resource in storage.
+     * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     $data = [
-    //         'city' => $request->input('city'),
-    //         'X' => $request->input('X'),
-    //         'Y' => $request->input('Y'),
-    //         'radius' => $request->input('radius'),
-    //     ];
-
-    //     Http::post(env('API_URL') . 'cities', $data);
-    //     return redirect('/admin/cities');
-    // }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function storeNewBike(Request $request)
     {
-        //
+        $data = [
+            'id' => $request->input('bikeId'),
+            'X' => $request->input('X'),
+            'Y' => $request->input('Y'),
+            'status' => $request->input('status'),
+            'battery' => $request->input('battery')
+        ];
+        
+        $http = new Http();
+        $bikes = $http::put(env('API_URL') . 'bikes/' . $data["id"], $data);
+        return redirect()->route('showSingleBike', ['bikeId' => $data['id']]);
     }
-
-
+    
+    
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function ShowSingleBike($bikeId)
+    public function destroyBike(Request $request)
     {
-        $bike = Http::get(env('API_URL') . 'bikes/' . $bikeId);
-        $bike = json_decode($bike, true);
-        return view('admin.showSinglebike', [
-            "bike" => $bike
+        $http = new Http();
+        $bike = $request->input("bikeId");
+        $bikes = $http::get(env('API_URL') . 'bikes');
+        $http::delete(env('API_URL') . 'bikes/' . $bike);
+        $bikes = json_decode($bikes, true);
+        return redirect()->route('bikes', [
+            "bikes" => $bikes
         ]);
     }
 
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Routing\Redirector
      */
-    public function update(Request $request, $id)
+    public function storeBike(Request $request)
     {
-        //
+        $http = new Http();
+        $cities = $http::get(env('API_URL') . 'cities/' . $request->input("id"));
+        $cities = json_decode($cities, true);
+        $data = [
+            'name' => "Sparky-" . $request->input("name"),
+            'X' => $cities["X"],
+            'Y' => $cities["Y"],
+            'velocity' => 0,
+            'status' => 'available',
+            'battery' => 100
+        ];
+        $test = $http::post(env('API_URL') . 'bikes', $data);
+        if ($test->failed()) {
+            $bikes = $http::get(env('API_URL') . 'bikes');
+            $cities = $http::get(env('API_URL') . 'cities');
+    
+            $cities = json_decode($cities, true);
+            $bikes = json_decode($bikes, true);
+            return view('admin.addBike',
+            [
+                "error" => "Namnet finns redan",
+                "bikes" => $bikes,
+                "cities" => $cities
+            ]);
+        }
+        $bikes = $http::get(env('API_URL') . 'bikes');
+        $bikes = json_decode($bikes, true);
+        return view('/admin/bikes', [
+            "bikes" => $bikes,
+        ]);
     }
-
+    
+    
     /**
-     * Remove the specified resource from storage.
+     * Display a listing of the resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
-    public function destroy($id)
+    public function createBike()
     {
-        //
+        $http = new Http();
+        $bikes = $http::get(env('API_URL') . 'bikes');
+        $cities = $http::get(env('API_URL') . 'cities');
+
+        $cities = json_decode($cities, true);
+
+        $bikes = json_decode($bikes, true);
+        return view('admin.addBike', [
+            "bikes" => $bikes,
+            "cities" => $cities
+        ]);
     }
 }
