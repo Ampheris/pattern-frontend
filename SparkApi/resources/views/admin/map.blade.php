@@ -40,6 +40,26 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
         popupAnchor:  [0, 0]
     });
 
+    // green bike icon
+    var greenIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    // red bike icon
+    var redIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
     function getBikes() {
         $.ajax({
             type: 'GET',
@@ -59,43 +79,60 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
         console.log(typeof bikes);
         if (typeof bikes !== 'undefined') {
             for (var i = 0; i < bikes.length; i++) {
-                console.log(bikes[i].X);
-                var bikeId = bikes[i].id;
-                bikeLayer.addLayer((L.marker([bikes[i].X, bikes[i].Y]).bindPopup(
-                    `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p>`
-                )));
-            }
+                if (bikes[i].status == 'available') {
+                    // var bikeId = bikes[i].id;
+                    bikeLayer.addLayer(L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).addTo(map).bindPopup(
+                        `<p>ID: ${bikes[i].id}: ${bikes[i].name}</p><p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}%</p><p><a href='{{url('/admin/bikes/')}}/${bikes[i].id}'>Ändra</a></p>`
+                    ));
+                } else {
+                    bikeLayer.addLayer(L.marker([bikes[i].X, bikes[i].Y], {icon: redIcon}).addTo(map).bindPopup(
+                        `<p>ID: ${bikes[i].id}: ${bikes[i].name}</p><p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}%</p><p><a href='{{url('/admin/bikes/')}}/${bikes[i].id}'>Ändra</a></p>`
+                    ));
+                }
             bikeLayer.addTo(map);
         }
     }
-
-    for (var i = 0; i < cities.length; i++) {
-        console.log(cities[i].radius);
-        var circle = L.circle([cities[i].X, cities[i].Y], {
-            fillColor: '#00d640',
-            stroke: '#00d640',
-            radius: cities[i].radius*110000
-        }).addTo(map);
     }
 
+
+
+    // Cities circle
+    for (var i = 0; i < cities.length; i++) {
+        console.log(cities[i].radius);
+        console.log(cities[i])
+        var circle = L.circle([cities[i].X, cities[i].Y], {
+            fillColor: '#00d640',
+            color: '#2aad27',
+            radius: cities[i].radius*110000
+        }).addTo(map).bindPopup(
+            `<p><b>Stad</b></p><p>${cities[i].city}</p><p><a href='{{url('/admin/cities/update/')}}/${cities[i].id}'>Ändra</a></p>`
+        );
+    }
+
+    // Chargingstation circle
     for (var i = 0; i < chargingstations.length; i++) {
         console.log(chargingstations[i].radius);
         var circle = L.circle([chargingstations[i].X, chargingstations[i].Y], {
             fillColor: '#9e4209',
-            stroke: '#9e4209',
+            color: '#987654',
             fillOpacity: 0.1,
             radius: chargingstations[i].radius*110000
-        }).addTo(map);
+        }).addTo(map).bindPopup(
+            `<p><b>Laddstation</b></p><p>${chargingstations[i].name}</p><p><a href='{{url('/admin/chargingstations/')}}/${chargingstations[i].id}'>Ändra</a></p>`
+            );
     }
 
+    // Parkingspace Circle
     for (var i = 0; i < parkingspaces.length; i++) {
         console.log(parkingspaces[i].radius);
         var circle = L.circle([parkingspaces[i].X, parkingspaces[i].Y], {
             fillColor: '#0862d1',
-            stroke: '#0862d1',
+            color: '#0862d1',
             fillOpacity: 0.1,
             radius: parkingspaces[i].radius*110000
-        }).addTo(map);
+        }).addTo(map).bindPopup(
+            `<p><b>Parkeringsplats</b></p><p>${parkingspaces[i].name}</p><p><a href='{{url('/admin/parkingspace')}}/${parkingspaces[i].id}'>Ändra</a></p>`
+            );;
     }
 
     var popup = L.popup();

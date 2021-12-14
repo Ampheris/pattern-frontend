@@ -53,7 +53,7 @@ class BikeRideController extends Controller
             'bike_id' => $bike['id']
         ];
 
-        $http::post(env('API_URL') . 'bikehistory/start', $data);
+        $bikeRide = $http::post(env('API_URL') . 'bikehistory/start', $data);
         return redirect()->route('map');
     }
 

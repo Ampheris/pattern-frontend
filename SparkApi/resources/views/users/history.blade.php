@@ -12,6 +12,7 @@
               <div class="mt-4">
                   @if(is_null($item['stop_time']))
                   <div class="d-flex justify-content-between align-items-center"> <span>Pågående</span></div>
+                  <div class="d-flex justify-content-between align-items-center"> <span>Cykel id: {{ $item['bike_id']}}</span></div>
                   @else
                     <div class="d-flex justify-content-between align-items-center"> <span>Åkturens längd:</span> <span>{{ round($item['time'], 1) }} minuter</span> </div>
                       @if(!is_null($item['total_price']))

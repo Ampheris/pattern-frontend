@@ -13,8 +13,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="slide-navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="{{ route('cities') }}">Alla städer</a></li>
-        
+        <li><a href="{{ url('/admin/cities') }}">Städer</a></li>
+        {{-- <li><a href="{{ route('users') }}">Kunder</a></li> --}}
+        <li><a href="{{ route('bikes') }}">Sparkcyklar</a></li>
+        <li><a href="{{ route('parking') }}">Parkering</a></li>
+        <li><a href="{{ route('chargingstations') }}">Laddningsstationer</a></li>
         <li><a href="#">Inställningar</a></li>
       </ul>
     </div>

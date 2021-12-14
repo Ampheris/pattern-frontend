@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-light bg-light">
     <form class="form-inline">
-      {{-- <button class="btn btn-outline-success" type="button"><a href="{{ route('addABike') }}">Lägg till stad</a></button> --}}
+      <button class="btn btn-outline-success" type="button"><a href="{{ route('createBike') }}">Lägg till sparkcykel</a></button>
     </form>
   </nav>
 

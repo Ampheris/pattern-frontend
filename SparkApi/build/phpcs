@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 FILE: ...patterns\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php
 -------------------------------------------------------------------------------
 FOUND 1 ERROR AFFECTING 1 LINE
@@ -8,4 +9,647 @@ FOUND 1 ERROR AFFECTING 1 LINE
 -------------------------------------------------------------------------------
 
 Time: 11.98 secs; Memory: 8MB
+=======
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Console\Kernel.php
+-------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Exceptions\Handler.php
+-----------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Admin\BikesController.php
+-------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------------------------------------
+ 6 | ERROR | [x] Header blocks must be separated by a single blank line
+-------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Admin\CitiesController.php
+--------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+--------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Admin\Controller.php
+--------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+--------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Admin\MapController.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Admin\UsersController.php
+-------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------------------------------------
+ 6 | ERROR | [x] Header blocks must be separated by a single blank line
+-------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Auth\ConfirmPasswordController.php
+----------------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Auth\ForgotPasswordController.php
+---------------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Auth\LoginController.php
+------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Auth\ResetPasswordController.php
+--------------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+--------------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Auth\VerificationController.php
+-------------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-------------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Controller.php
+--------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+--------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\HomeController.php
+------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Users\BikeRideController.php
+----------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Users\Controller.php
+--------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+--------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Users\HistoryController.php
+---------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Users\LoginController.php
+-------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------------------------------------
+ 29 | ERROR | [x] Space found before comma in argument list
+-------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Users\MapController.php
+-----------------------------------------------------------------------------------------------------------------------
+FOUND 2 ERRORS AFFECTING 2 LINES
+-----------------------------------------------------------------------------------------------------------------------
+  1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+ 33 | ERROR | [x] Whitespace found at end of line
+-----------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 2 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Users\OrderController.php
+-------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Controllers\Users\ProfileController.php
+---------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Kernel.php
+----------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Middleware\Authenticate.php
+---------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Middleware\EncryptCookies.php
+-----------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Middleware\PreventRequestsDuringMaintenance.php
+-----------------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Middleware\RedirectIfAuthenticated.php
+--------------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+--------------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Middleware\TrimStrings.php
+--------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+--------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Middleware\TrustHosts.php
+-------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Middleware\TrustProxies.php
+---------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Http\Middleware\VerifyCsrfToken.php
+------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Models\User.php
+----------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Providers\AppServiceProvider.php
+---------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Providers\AuthServiceProvider.php
+----------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Providers\BroadcastServiceProvider.php
+---------------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Providers\EventServiceProvider.php
+-----------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\app\Providers\RouteServiceProvider.php
+-----------------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\bootstrap\app.php
+--------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+--------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\app.php
+-----------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\auth.php
+------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\broadcasting.php
+--------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+--------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+--------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+--------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\cors.php
+------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\filesystems.php
+-------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\hashing.php
+---------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\logging.php
+---------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\mail.php
+------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\queue.php
+-------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\sanctum.php
+---------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\services.php
+----------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\session.php
+---------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\config\view.php
+------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\resources\css\app.min.css
+----------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\resources\js\app.js
+----------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\resources\js\bootstrap.js
+----------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\resources\lang\en\auth.php
+-----------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\resources\lang\en\pagination.php
+-----------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\resources\lang\en\passwords.php
+----------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\resources\lang\en\validation.php
+-----------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\routes\api.php
+-----------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\routes\channels.php
+----------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+----------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+----------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+----------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\routes\console.php
+---------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\server.php
+-------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\tests\CreatesApplication.php
+-------------------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-------------------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-------------------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-------------------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\tests\TestCase.php
+---------------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+---------------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+---------------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+---------------------------------------------------------------------------------------------
+
+
+FILE: C:\Users\Bajspotatis\Dropbox\dbwebb-kurser\projekt\frontend\SparkApi\webpack.mix.js
+-----------------------------------------------------------------------------------------
+FOUND 1 ERROR AFFECTING 1 LINE
+-----------------------------------------------------------------------------------------
+ 1 | ERROR | [x] End of line character is invalid; expected "\n" but found "\r\n"
+-----------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 1 MARKED SNIFF VIOLATIONS AUTOMATICALLY
+-----------------------------------------------------------------------------------------
+
+Time: 2.57 secs; Memory: 8MB
+>>>>>>> loginBranch
 

@@ -11,7 +11,7 @@
                 <div class="mt-4">
                     <div class="d-flex justify-content-between align-items-center"> <span>Påbörjad</span> <span>{{ $bikeride['start_time'] }}</span> </div>
                     <div class="d-flex justify-content-between align-items-center"> <span>Avslutad</span> <span>{{ $bikeride['stop_time'] }}</span> </div>
-                    <div class="d-flex justify-content-between align-items-center"> <span>Pris</span> <span>{{ $bikeride['total_price'] == null ? 'Månadskort' : $bikeride['total_price']}}</span> </div>
+                    <div class="d-flex justify-content-between align-items-center"> <span>Pris</span> <span>{{ $bikeride['total_price'] == null ? 'Månadskort' : round($bikeride['total_price'], 1)}} kr</span> </div>
                 </div>
             </div>
         </div>

@@ -32,7 +32,9 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     let cities = {!! $cities !!};
     let chargingstations = {!! $chargingstations !!};
     let parkingspaces = {!! $parkingspaces !!};
+    // let currentBikeRide = {!! $currentBikeRide !!};
 
+    // console.log(currentBikeRide);
     let bikeLayer = L.layerGroup();
 
     let locationMarker = L.icon({
@@ -42,41 +44,54 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
         popupAnchor:  [0, 0]
     });
 
+    // green bike icon
+    var greenIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
     for (var i = 0; i < bikes.length; i++) {
         console.log(bikes[i].X);
         if (bikes[i].status == 'available') {
             var bikeId = bikes[i].id;
-            bikeLayer.addLayer((L.marker([bikes[i].X, bikes[i].Y]).bindPopup(
+            bikeLayer.addLayer((L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).bindPopup(
                 `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p><a href='{{url('/startbikeride')}}/${bikes[i].id}'>Starta åktur</a>`
             )));
         }
     }
     bikeLayer.addTo(map);
 
+    // Cities circle
     for (var i = 0; i < cities.length; i++) {
         console.log(cities[i].radius);
         var circle = L.circle([cities[i].X, cities[i].Y], {
             fillColor: '#00d640',
-            stroke: '#00d640',
+            color: '#2aad27',
             radius: cities[i].radius*110000
         }).addTo(map);
     }
 
+    // Chargingstation circle
     for (var i = 0; i < chargingstations.length; i++) {
         console.log(chargingstations[i].radius);
         var circle = L.circle([chargingstations[i].X, chargingstations[i].Y], {
             fillColor: '#9e4209',
-            stroke: '#9e4209',
+            color: '#987654',
             fillOpacity: 0.1,
             radius: chargingstations[i].radius*110000
         }).addTo(map);
     }
 
+    // Parkingspace Circle
     for (var i = 0; i < parkingspaces.length; i++) {
         console.log(parkingspaces[i].radius);
         var circle = L.circle([parkingspaces[i].X, parkingspaces[i].Y], {
             fillColor: '#0862d1',
-            stroke: '#0862d1',
+            color: '#0862d1',
             fillOpacity: 0.1,
             radius: parkingspaces[i].radius*110000
         }).addTo(map);

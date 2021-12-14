@@ -15,7 +15,7 @@ class CitiesController extends Controller
     public function index()
     {
         $http = new Http();
-        $cities = $http::get('http://localhost:8080/sparkapi/v1/cities');
+        $cities = $http::get(env('API_URL') . 'cities');
         $cities = json_decode($cities, true);
         return view('admin.cities', [
             "cities" => $cities,
@@ -27,30 +27,16 @@ class CitiesController extends Controller
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function create()
+    public function createCity()
     {
         $http = new Http();
-        $cities = $http::get('http://localhost:8080/sparkapi/v1/cities');
+        $cities = $http::get(env('API_URL') . 'cities');
         $cities = json_decode($cities, true);
         return view('admin.addCity', [
             "cities" => $cities,
         ]);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\View
-     */
-    public function changeACity()
-    {
-        $http = new Http();
-        $cities = $http::get('http://localhost:8080/sparkapi/v1/cities');
-        $cities = json_decode($cities, true);
-        return view('admin.changeACity', [
-            "cities" => $cities,
-        ]);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -58,7 +44,7 @@ class CitiesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Routing\Redirector
      */
-    public function store(Request $request)
+    public function storeCity(Request $request)
     {
         $data = [
             'city' => $request->input('city'),
@@ -68,21 +54,9 @@ class CitiesController extends Controller
         ];
 
         $http = new Http();
-        $http::post("http://localhost:8080/sparkapi/v1/cities/", $data);
+        $http::post(env('API_URL') . 'cities', $data);
         return redirect('/admin/cities');
     }
-
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function show($id)
-    // {
-    //     //
-    // }
-    //
 
     /**
      * Display the specified resource.
@@ -93,46 +67,30 @@ class CitiesController extends Controller
     public function showSingleCity($cityId)
     {
         $http = new Http();
-        $city = $http::get("http://localhost:8080/sparkapi/v1/cities/" . $cityId);
-
+        $city = $http::get(env('API_URL') . 'cities/' . $cityId);
         $city = json_decode($city, true);
         return view('admin.showSingleCity', [
             "city" => $city
         ]);
     }
 
-    //
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function edit($id)
-    // {
-    //     //
-    // }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function storeNewCity(Request $request)
+    {
+        $data = [
+            'id' => $request->input('cityId'),
+            'radius' => $request->input('radius'),
+            'X' => $request->input('X'),
+            'Y' => $request->input('Y')
+        ];
 
-    // /**
-    //  * Update the specified resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
-    //
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  int  $id
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+        $http = new Http();
+        $http::put(env('API_URL') . 'cities/' . $data["id"], $data);
+        return redirect()->route('cities');
+    }
 }
