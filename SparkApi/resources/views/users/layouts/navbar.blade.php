@@ -19,8 +19,6 @@
           <li><a href="{{ route('map') }}"><i class="material-icons">map</i>Karta</a></li>
         <li><a href="{{ route('profile') }}"><i class="material-icons">account_circle</i>Profil</a></li>
         <li><a href="{{ route('history') }}"><i class="material-icons">access_time</i>Historik</a></li>
-        <li><a href="#">Hjälp</a></li>
-        <li><a href="#">Inställningar</a></li>
         <li><a href="{{ 'loginGithub' }}">Login</a></li>
         <li><a href="{{ 'admin' }}">Admin</a></li>
       </ul>

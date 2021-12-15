@@ -103,7 +103,7 @@ class ProfileController extends Controller
     {
         $cookie = $_COOKIE['access_token'];
         $http = new Http();
-        $subscription = $http::withToken($cookie)->patch(env('API_URL') . 'subscriptions/');
+        $subscription = $http::withToken($cookie)->get(env('API_URL') . 'subscriptions/start');
         return redirect()->route('subscription', [
             'subscription' => $subscription
         ]);
@@ -115,7 +115,7 @@ class ProfileController extends Controller
         $sub_id = $_POST['subscriptionId'];
         $http = new Http();
 
-        $http::withToken($cookie)->patch(env('API_URL') . 'subscriptions/stop?subscription_id=' . $sub_id);
+        $http::withToken($cookie)->get(env('API_URL') . 'subscriptions/stop?sub_id=' . $sub_id);
         return redirect()->route('subscription');
     }
 }

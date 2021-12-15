@@ -22,6 +22,7 @@ define('BASE_URL', 'http://localhost:8080/sparkapi/v1/');
  * / Route: Shows map
  */
 Route::get('/', [App\Http\Controllers\Users\MapController::class, 'index'])->name('map');
+Route::get('/login', [App\Http\Controllers\Users\LoginController::class, 'index'])->name('login');
 Route::get('/loginGithub', [App\Http\Controllers\Users\LoginController::class, 'loginGithub'])->name('loginGithub');
 
 /*

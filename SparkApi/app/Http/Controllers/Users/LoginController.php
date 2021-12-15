@@ -15,7 +15,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('users.loginGithub');
+        return view('auth.login');
     }
 
     public function loginGithub(): RedirectResponse
