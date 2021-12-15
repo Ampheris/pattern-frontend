@@ -34,10 +34,10 @@ class BikeRideController extends Controller
 
     public function index(Request $request, $bikerideId)
     {
+        $cookie = $_COOKIE['access_token'];
         $http = new Http();
-        // $bike = $http::get(env('API_URL') . 'bikes/' . $bikeId);
-        $bikeride = $http::get(env('API_URL') . 'bikehistory/' . $bikerideId);
-        // $bikeride = json_decode($bikeride);
+        $bikeride = $http::withToken($cookie)->get(env('API_URL') . 'bikehistory/' . $bikerideId);
+
         $bikeride = json_decode($bikeride, true);
         return view('users.bikeride', [
             "bikeride" => $bikeride[0]
@@ -49,12 +49,8 @@ class BikeRideController extends Controller
         $cookie = $_COOKIE['access_token'];
         $http = new Http();
         $bike = $http::withToken($cookie)->get(env('API_URL') . 'bikes/' . $bikeId);
-        $data = [
-            'customer_id' => 1,
-            'bike_id' => $bike['id']
-        ];
 
-        $bikeRide = $http::withToken($cookie)->post(env('API_URL') . 'bikehistory/start', $data);
+        $http::withToken($cookie)->get(env('API_URL') . 'bikehistory/start?bike_id=' . $bikeId );
         return redirect()->route('map');
     }
 
