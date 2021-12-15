@@ -24,14 +24,17 @@ class MapController extends Controller
      */
     public function index()
     {
+        $cookie = $_COOKIE['access_token'];
+
         $http = new Http();
-        $bikes = $http::get(env('API_URL') . 'bikes');
-        $cities = $http::get(env('API_URL') . 'cities');
-        $chargingstations = $http::get(env('API_URL') . 'chargingstations');
-        $parkingspaces = $http::get(env('API_URL') . 'parkingspaces');
-        $subscription = $http::get(env('API_URL') . 'subscriptions/' . 5);
-        $currentBikeRide = $http::get(env('API_URL') . 'bikehistory/user/active/' . 1);
+        $bikes = $http::withToken($cookie)->get(env('API_URL') . 'bikes');
+        $cities = $http::withToken($cookie)->get(env('API_URL') . 'cities');
+        $chargingstations = $http::withToken($cookie)->get(env('API_URL') . 'chargingstations');
+        $parkingspaces = $http::withToken($cookie)->get(env('API_URL') . 'parkingspaces');
+        $subscription = $http::withToken($cookie)->get(env('API_URL') . 'subscriptions');
+        $currentBikeRide = $http::withToken($cookie)->get(env('API_URL') . 'bikehistory/user/active');
         // var_dump($bikes);
+
         try {
             $renew = $http::put(env('API_URL') . 'subscriptions/renew/' . $subscription['id']);
         } catch (\Exception $e) {

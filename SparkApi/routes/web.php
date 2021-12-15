@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 
@@ -21,14 +22,7 @@ define('BASE_URL', 'http://localhost:8080/sparkapi/v1/');
  * / Route: Shows map
  */
 Route::get('/', [App\Http\Controllers\Users\MapController::class, 'index'])->name('map');
-
-
-/*
- * / User route login
-*/
-Route::get('/loginGithub', [App\Http\Controllers\Users\LoginController::class, 'index'])->name('login');
-Route::post('/loginGithub', [App\Http\Controllers\Users\LoginController::class, 'login'])->name('loginUser');
-
+Route::get('/loginGithub', [App\Http\Controllers\Users\LoginController::class, 'loginGithub'])->name('loginGithub');
 
 /*
  * bikeride Route: You get here after you choose a bike on the map. If the bike is available you can click on start a ride.

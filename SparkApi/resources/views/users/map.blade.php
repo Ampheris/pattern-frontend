@@ -54,7 +54,7 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
 
     for (var i = 0; i < bikes.length; i++) {
         console.log(bikes[i].X);
-        if (bikes[i].status == 'available') {
+        if (bikes[i].status === 'available') {
             var bikeId = bikes[i].id;
             bikeLayer.addLayer((L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).bindPopup(
                 `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p><a href='{{url('/startbikeride')}}/${bikes[i].id}'>Starta åktur</a>`
@@ -119,7 +119,6 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
             [pos.coords.latitude, pos.coords.longitude],
             {icon: locationMarker}
          ).addTo(map)
-
     }
 
     function geoError(error) {

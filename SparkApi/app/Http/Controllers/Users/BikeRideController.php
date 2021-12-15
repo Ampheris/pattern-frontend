@@ -59,17 +59,15 @@ class BikeRideController extends Controller
 
     public function stopBikeRide()
     {
+        $cookie = $_COOKIE['access_token'];
         $http = new Http();
-        $bike = $http::get(env('API_URL') . 'bikehistory/user/active/' . 1);
-        $bikeRide = $http::put(env('API_URL') . 'bikehistory/stop/' . 1);
+        $bikeRide = $http::withToken($cookie)->get(env('API_URL') . 'bikehistory/stop');
 
-        var_dump(json_decode($bike));
-        var_dump(json_decode($bikeRide));
         if (isset($bikeRide['message'])) {
-            $message  = $bikeRide['message'];
+            $message = $bikeRide['message'];
             return redirect()->route('addToBalance', ['message' => $message]);
         }
-            // $message  = null;
+        // $message  = null;
         return redirect()->route('bikeride', $bikeRide['id']);
     }
 }
