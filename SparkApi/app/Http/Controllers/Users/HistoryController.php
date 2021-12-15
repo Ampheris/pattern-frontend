@@ -25,8 +25,10 @@ class HistoryController extends Controller
      */
     public function index()
     {
+        $cookie = $_COOKIE['access_token'];
+
         $http = new Http();
-        $history = $http::get(env('API_URL') . 'bikehistory/user/' . '1');
+        $history = $http::withToken($cookie)->get(env('API_URL') . 'bikehistory/user');
         $history = json_decode($history, true);
 
         foreach ($history as $key => $value) {

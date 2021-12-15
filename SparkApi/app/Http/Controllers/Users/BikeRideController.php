@@ -46,14 +46,15 @@ class BikeRideController extends Controller
 
     public function startBikeRide($bikeId)
     {
+        $cookie = $_COOKIE['access_token'];
         $http = new Http();
-        $bike = $http::get(env('API_URL') . 'bikes/' . $bikeId);
+        $bike = $http::withToken($cookie)->get(env('API_URL') . 'bikes/' . $bikeId);
         $data = [
             'customer_id' => 1,
             'bike_id' => $bike['id']
         ];
 
-        $bikeRide = $http::post(env('API_URL') . 'bikehistory/start', $data);
+        $bikeRide = $http::withToken($cookie)->post(env('API_URL') . 'bikehistory/start', $data);
         return redirect()->route('map');
     }
 
