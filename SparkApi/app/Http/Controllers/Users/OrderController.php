@@ -25,23 +25,19 @@ class OrderController extends Controller
     public function index()
     {
         $cookie = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $orders = $http::withToken($cookie)->get(env('API_URL') . 'orders/user');
+        $orders = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'orders/user');
 
         $orders = json_decode($orders, true);
         return view('users.orders', [
             "orders" => $orders
-        ]);
-    }
-
-    public function showSingleOrder($orderId)
-    {
-        $cookie = $_COOKIE['access_token'];
-        $http = new Http();
-        $order = $http::withToken($cookie)->get(env('API_URL') . 'orders/' . $orderId);
-        $order = json_decode($order, true);
-        return view('users.singleOrder', [
-            "order" => $order
         ]);
     }
 }

@@ -24,16 +24,21 @@ class MapController extends Controller
      */
     public function index()
     {
-        $cookie = $_COOKIE['access_token'];
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
 
         $http = new Http();
-        $bikes = $http::withToken($cookie)->get(env('API_URL') . 'bikes');
-        $cities = $http::withToken($cookie)->get(env('API_URL') . 'cities');
-        $chargingstations = $http::withToken($cookie)->get(env('API_URL') . 'chargingstations');
-        $parkingspaces = $http::withToken($cookie)->get(env('API_URL') . 'parkingspaces');
-        $subscription = $http::withToken($cookie)->get(env('API_URL') . 'subscriptions');
-        $currentBikeRide = $http::withToken($cookie)->get(env('API_URL') . 'bikehistory/user/active');
-        // var_dump($bikes);
+        $bikes = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikes');
+        $cities = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'cities');
+        $chargingstations = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'chargingstations');
+        $parkingspaces = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'parkingspaces');
+        $subscription = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'subscriptions');
+        $currentBikeRide = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikehistory/user/active');
 
         try {
             $renew = $http::put(env('API_URL') . 'subscriptions/renew/' . $subscription['id']);

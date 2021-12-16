@@ -28,10 +28,17 @@ class ProfileController extends Controller
     public function index(): Renderable
     {
         $cookie = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
 
         $http = new Http();
-        $subscription = $http::withToken($cookie)->get(env('API_URL') . 'subscriptions/user');
-        $user = $http::withToken($cookie)->get(env('API_URL') . 'users/get');
+        $subscription = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/user');
+        $user = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'users/get');
 
         $user = json_decode($user);
         $subscription = json_decode($subscription, true);
@@ -46,9 +53,16 @@ class ProfileController extends Controller
     public function subscription(Request $request)
     {
         $cookie = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
 
-        $subscription = $http::withToken($cookie)->get(env('API_URL') . 'subscriptions/user');
+        $subscription = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/user');
         $addSubscription = false;
         $date = Carbon::now();
         $subscriptionActive = false;
@@ -71,8 +85,15 @@ class ProfileController extends Controller
     public function balance(Request $request)
     {
         $cookie = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $user = $http::withToken($cookie)->get(env('API_URL') . 'users/get');
+        $user = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'users/get');
 
         return view('users.balance', [
             'balance' => $user['balance'],
@@ -93,17 +114,31 @@ class ProfileController extends Controller
     public function addToBalance(Request $request): RedirectResponse
     {
         $http = new Http();
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $cookie = $_COOKIE['access_token'];
 
-        $http::withToken($cookie)->patch(env('API_URL') . 'users/balance?balance=' . $request['balance']);
+        $http::withToken($cookie)->withHeaders($headers)->patch(env('API_URL') . 'users/balance?balance=' . $request['balance']);
         return redirect()->route('profile');
     }
 
     public function manageSubscription(): RedirectResponse
     {
         $cookie = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $subscription = $http::withToken($cookie)->get(env('API_URL') . 'subscriptions/start');
+        $subscription = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/start');
         return redirect()->route('subscription', [
             'subscription' => $subscription
         ]);
@@ -112,10 +147,17 @@ class ProfileController extends Controller
     public function endSubscription(Request $request): RedirectResponse
     {
         $cookie = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $sub_id = $_POST['subscriptionId'];
         $http = new Http();
 
-        $http::withToken($cookie)->get(env('API_URL') . 'subscriptions/stop?sub_id=' . $sub_id);
+        $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/stop?sub_id=' . $sub_id);
         return redirect()->route('subscription');
     }
 }

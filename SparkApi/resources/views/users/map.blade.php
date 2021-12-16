@@ -1,7 +1,6 @@
 @extends('users/layouts.app')
 
 @section('content')
-{{ $renew }}
 <div class="map" id="map">
 </div>
 @if(isset($currentBikeRide['id']))

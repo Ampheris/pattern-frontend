@@ -23,8 +23,8 @@ class BikesController extends Controller
     }
 
 
-    
-    
+
+
     /**
      * Display the specified resource.
      *
@@ -44,9 +44,9 @@ class BikesController extends Controller
             "chargingstations" => $chargingstations
         ]);
     }
-    
 
-    
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -73,13 +73,13 @@ class BikesController extends Controller
             'status' => $request->input('status'),
             'battery' => $request->input('battery')
         ];
-        
+
         $http = new Http();
         $bikes = $http::put(env('API_URL') . 'bikes/' . $data["id"], $data);
         return redirect()->route('showSingleBike', ['bikeId' => $data['id']]);
     }
-    
-    
+
+
     /**
      * Display the specified resource.
      *
@@ -124,7 +124,7 @@ class BikesController extends Controller
         if ($test->failed()) {
             $bikes = $http::get(env('API_URL') . 'bikes');
             $cities = $http::get(env('API_URL') . 'cities');
-    
+
             $cities = json_decode($cities, true);
             $bikes = json_decode($bikes, true);
             return view('admin.addBike',
@@ -140,8 +140,8 @@ class BikesController extends Controller
             "bikes" => $bikes,
         ]);
     }
-    
-    
+
+
     /**
      * Display a listing of the resource.
      *
