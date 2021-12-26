@@ -31,8 +31,16 @@ class UsersController extends Controller
      */
     public function showSingleUser($userId)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $user = $http::get(env('API_URL') . 'users/' . $userId);
+        $user = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'users/' . $userId);
         $user = json_decode($user, true);
         return view('admin.showSingleUser', [
             "user" => $user,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Users;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -14,20 +15,11 @@ class LoginController extends Controller
      */
     public function index()
     {
-        return view('users.loginGithub');
+        return view('auth.login');
     }
 
-        /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function login()
+    public function loginGithub(): RedirectResponse
     {
-        $http = new Http();
-        $login = $http::get(env('API_URL') . "login/github");
-        return view('Users.loginGithub' , [
-            'login' => $login
-        ]);
+        return redirect(env('API_URL') . 'login/github');
     }
 }

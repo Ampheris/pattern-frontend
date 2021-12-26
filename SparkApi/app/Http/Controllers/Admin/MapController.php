@@ -24,11 +24,19 @@ class MapController extends Controller
      */
     public function index()
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $bikes = $http::get(env('API_URL') . 'bikes');
-        $cities = $http::get(env('API_URL') . 'cities');
-        $chargingstations = $http::get(env('API_URL') . 'chargingstations');
-        $parkingspaces = $http::get(env('API_URL') . 'parkingspaces');
+        $bikes = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikes');
+        $cities = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'cities');
+        $chargingstations = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'chargingstations');
+        $parkingspaces = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'parkingspaces');
 
         return view('admin.map', [
             "bikes" => $bikes,
