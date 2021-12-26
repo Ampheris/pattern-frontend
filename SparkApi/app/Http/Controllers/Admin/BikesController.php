@@ -14,8 +14,16 @@ class BikesController extends Controller
      */
     public function index()
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $bikes = $http::get(env('API_URL') . 'bikes');
+        $bikes = $http::withToken($access_token)->withHeaders($headers)->withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikes');
         $bikes = json_decode($bikes, true);
         return view('admin.bikes', [
             "bikes" => $bikes,
@@ -34,9 +42,17 @@ class BikesController extends Controller
      */
     public function showSingleBike($bikeId)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $bikes = $http::get(env('API_URL') . 'bikes/' . $bikeId);
-        $chargingstations= $http::get(env('API_URL') . 'chargingstations');
+        $bikes = $http::withToken($access_token)->withHeaders($headers)->withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikes/' . $bikeId);
+        $chargingstations= $http::withToken($access_token)->withHeaders($headers)->withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'chargingstations');
         $chargingstations = json_decode($chargingstations, true);
         $bikes = json_decode($bikes, true);
         return view('admin.showSinglebike', [
@@ -51,16 +67,24 @@ class BikesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function storeNewBike(Request $request)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         if ($request->input('laddstation') == 'null') {
             $x = $request->input('X');
             $y = $request->input('Y');
         } else {
             $http = new Http();
-            $chargingstations = $http::get(env('API_URL') . 'chargingstations/' . $request->input('laddstation'));
+            $chargingstations = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'chargingstations/' . $request->input('laddstation'));
             $chargingstations = json_decode($chargingstations, true);
             $x = $chargingstations["X"];
             $y = $chargingstations["Y"];
@@ -75,8 +99,8 @@ class BikesController extends Controller
         ];
 
         $http = new Http();
-        $bikes = $http::put(env('API_URL') . 'bikes/' . $data["id"], $data);
-        return redirect()->route('showSingleBike', ['bikeId' => $data['id']]);
+        $bikes = $http::withToken($access_token)->withHeaders($headers)->put(env('API_URL') . 'bikes/' . $data["id"], $data);
+        return redirect('admin/bikes');
     }
 
 
@@ -90,10 +114,18 @@ class BikesController extends Controller
      */
     public function destroyBike(Request $request)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
         $bike = $request->input("bikeId");
-        $bikes = $http::get(env('API_URL') . 'bikes');
-        $http::delete(env('API_URL') . 'bikes/' . $bike);
+        $bikes = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikes');
+        $http::withToken($access_token)->withHeaders($headers)->delete(env('API_URL') . 'bikes/' . $bike);
         $bikes = json_decode($bikes, true);
         return redirect()->route('bikes', [
             "bikes" => $bikes
@@ -105,12 +137,20 @@ class BikesController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Routing\Redirector
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Routing\Redirector
      */
     public function storeBike(Request $request)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $cities = $http::get(env('API_URL') . 'cities/' . $request->input("id"));
+        $cities = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'cities/' . $request->input("id"));
         $cities = json_decode($cities, true);
         $data = [
             'name' => "Sparky-" . $request->input("name"),
@@ -120,10 +160,10 @@ class BikesController extends Controller
             'status' => 'available',
             'battery' => 100
         ];
-        $test = $http::post(env('API_URL') . 'bikes', $data);
+        $test = $http::withToken($access_token)->withHeaders($headers)->post(env('API_URL') . 'bikes', $data);
         if ($test->failed()) {
-            $bikes = $http::get(env('API_URL') . 'bikes');
-            $cities = $http::get(env('API_URL') . 'cities');
+            $bikes = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikes');
+            $cities = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'cities');
 
             $cities = json_decode($cities, true);
             $bikes = json_decode($bikes, true);
@@ -134,7 +174,7 @@ class BikesController extends Controller
                 "cities" => $cities
             ]);
         }
-        $bikes = $http::get(env('API_URL') . 'bikes');
+        $bikes = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikes');
         $bikes = json_decode($bikes, true);
         return view('/admin/bikes', [
             "bikes" => $bikes,
@@ -149,9 +189,17 @@ class BikesController extends Controller
      */
     public function createBike()
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $bikes = $http::get(env('API_URL') . 'bikes');
-        $cities = $http::get(env('API_URL') . 'cities');
+        $bikes = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikes');
+        $cities = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'cities');
 
         $cities = json_decode($cities, true);
 

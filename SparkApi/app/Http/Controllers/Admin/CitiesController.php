@@ -14,8 +14,16 @@ class CitiesController extends Controller
      */
     public function index()
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $cities = $http::get(env('API_URL') . 'cities');
+        $cities = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'cities');
         $cities = json_decode($cities, true);
         return view('admin.cities', [
             "cities" => $cities,
@@ -29,8 +37,17 @@ class CitiesController extends Controller
      */
     public function createCity()
     {
+
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $cities = $http::get(env('API_URL') . 'cities');
+        $cities = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'cities');
         $cities = json_decode($cities, true);
         return view('admin.addCity', [
             "cities" => $cities,
@@ -46,6 +63,14 @@ class CitiesController extends Controller
      */
     public function storeCity(Request $request)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $data = [
             'city' => $request->input('city'),
             'X' => $request->input('X'),
@@ -54,7 +79,7 @@ class CitiesController extends Controller
         ];
 
         $http = new Http();
-        $http::post(env('API_URL') . 'cities', $data);
+        $http::withToken($access_token)->withHeaders($headers)->post(env('API_URL') . 'cities', $data);
         return redirect('/admin/cities');
     }
 
@@ -66,8 +91,16 @@ class CitiesController extends Controller
      */
     public function showSingleCity($cityId)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $city = $http::get(env('API_URL') . 'cities/' . $cityId);
+        $city = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'cities/' . $cityId);
         $city = json_decode($city, true);
         return view('admin.showSingleCity', [
             "city" => $city
@@ -82,6 +115,14 @@ class CitiesController extends Controller
      */
     public function storeNewCity(Request $request)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $data = [
             'id' => $request->input('cityId'),
             'radius' => $request->input('radius'),
@@ -90,7 +131,7 @@ class CitiesController extends Controller
         ];
 
         $http = new Http();
-        $http::put(env('API_URL') . 'cities/' . $data["id"], $data);
+        $http::withToken($access_token)->withHeaders($headers)->put(env('API_URL') . 'cities/' . $data["id"], $data);
         return redirect()->route('cities');
     }
 }

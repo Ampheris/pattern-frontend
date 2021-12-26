@@ -14,8 +14,16 @@ class ParkingController extends Controller
      */
     public function index()
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $parking = $http::get(env('API_URL') . 'parkingspaces');
+        $parking = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'parkingspaces');
         $parking = json_decode($parking, true);
         return view('admin.parkingspace', [
             "parking" => $parking,
@@ -30,8 +38,16 @@ class ParkingController extends Controller
      */
     public function showSingleParkingspace($parkingId)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $parking = $http::get(env('API_URL') . 'parkingspaces/' . $parkingId);
+        $parking = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'parkingspaces/' . $parkingId);
         $parking = json_decode($parking, true);
         return view('admin.showSingleParkingspace', [
             "parking" => $parking
@@ -39,16 +55,24 @@ class ParkingController extends Controller
     }
 
 
-    
-    
+
+
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function storeUpdatedParkingspace(Request $request)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $data = [
             'id'     => $request->input('parkingId'),
             'X'      => $request->input('X'),
@@ -58,7 +82,7 @@ class ParkingController extends Controller
         ];
 
         $http = new Http();
-        $parking = $http::put(env('API_URL') . 'parkingspaces/' . $data["id"], $data);
+        $parking = $http::withToken($access_token)->withHeaders($headers)->put(env('API_URL') . 'parkingspaces/' . $data["id"], $data);
         return redirect()->route('showSingleParkingspace', ['parkingId' => $data['id']]);
     }
 
@@ -70,8 +94,16 @@ class ParkingController extends Controller
      */
     public function createParkingspace()
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $parking = $http::get(env('API_URL') . 'parkingspaces');
+        $parking = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'parkingspaces');
         $parking = json_decode($parking, true);
         return view('admin.addParkingspace', [
             "parking" => $parking,
@@ -86,15 +118,23 @@ class ParkingController extends Controller
      */
     public function storeNewParkingspace(Request $request)
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $data = [
-            'name' => $request->input('city'),
+            'name' => $request->input('name'),
             'X' => $request->input('X'),
             'Y' => $request->input('Y'),
             'radius' => $request->input('radius'),
         ];
 
         $http = new Http();
-        $http::post(env('API_URL') . 'cities', $data);
-        return redirect('/admin/cities');
+        $http::withToken($access_token)->withHeaders($headers)->post(env('API_URL') . 'parkingspaces', $data);
+        return redirect('/admin/parkingspace');
     }
 }

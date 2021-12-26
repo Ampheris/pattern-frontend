@@ -10,7 +10,7 @@ class AuthenticateAdmin
     {
         $response = $next($request);
 
-        if ($response->status() != 200) {
+        if ($response->status() == 402) {
             return redirect()->route('login');
         }
 
