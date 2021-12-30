@@ -9,8 +9,8 @@ class AuthenticateAdmin
     public function handle($request, Closure $next)
     {
         $response = $next($request);
-
-        if ($response->status() == 402) {
+        var_dump($response->status());
+        if ($response->status() == 401) {
             return redirect()->route('login');
         }
 
