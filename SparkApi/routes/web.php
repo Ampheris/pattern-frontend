@@ -27,6 +27,7 @@ Route::get('/', [App\Http\Controllers\Users\MapController::class, 'index'])->nam
  */
 Route::get('/login', [App\Http\Controllers\Users\LoginController::class, 'index'])->name('login');
 Route::get('/loginGithub', [App\Http\Controllers\Users\LoginController::class, 'loginGithub'])->name('loginGithub');
+Route::get('/logout', [App\Http\Controllers\Users\LoginController::class, 'logout'])->name('logout');
 
 /*
  * bikeride Route: You get here after you choose a bike on the map. If the bike is available you can click on start a ride.
