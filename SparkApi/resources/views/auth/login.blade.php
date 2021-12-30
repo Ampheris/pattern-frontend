@@ -3,8 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="welcome-text">
+            <h1>Välkommen till Sparkfy</h1>
+            <h3>Logga in för att fortsätta</h3>
+        </div>
         <div class="col-md-8">
-            <button><a href="{{ 'loginGithub' }}">Login github</a></button>
+            <a class="login" href="{{ 'loginGithub' }}">Logga in med github <i class="fab fa-github"></i></a>
         </div>
     </div>
 </div>
