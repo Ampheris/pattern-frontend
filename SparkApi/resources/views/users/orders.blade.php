@@ -16,8 +16,8 @@
                 <span class="subscription-price">Åktur</span>
                 @endif
                 <div class="mt-4">
-                    <div class="d-flex justify-content-between align-items-center"> <span>Pris</span> <span>{{ $order['total_price']}} kr</span> </div>
-                    <div class="d-flex justify-content-between align-items-center"> <span>Datum</span> <span>{{ $order['created_at']}}</span> </div>
+                    <div class="d-flex justify-content-between align-items-center"> <span>Pris</span> <span>{{ round( $order['total_price'], 1) }} kr</span> </div>
+                    <div class="d-flex justify-content-between align-items-center"> <span>Datum</span> <span>{{ $order['date']}}</span> </div>
                 </div>
             </div>
         </div>

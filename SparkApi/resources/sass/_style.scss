@@ -6,7 +6,7 @@
 }
 
 .welcome-text {
-    margin-top: 30%;
+    margin-top: 15%;
     text-align: center;
 }
 
@@ -22,5 +22,9 @@
 @media only screen and (max-width: 767px) {
     .boxeslist {
         width: 90%;
+    }
+
+    .welcome-text {
+        margin-top: 30%;
     }
 }
