@@ -127,7 +127,7 @@ class ProfileController extends Controller
         return redirect()->route('profile');
     }
 
-    public function manageSubscription(): RedirectResponse
+    public function manageSubscription()
     {
         $cookie = $_COOKIE['access_token'];
         $role = $_COOKIE['role'];
@@ -139,6 +139,7 @@ class ProfileController extends Controller
 
         $http = new Http();
         $subscription = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/start');
+        var_dump($subscription);
         return redirect()->route('subscription', [
             'subscription' => $subscription
         ]);
@@ -154,10 +155,10 @@ class ProfileController extends Controller
             'role' => $role
         ];
 
-        $sub_id = $_POST['subscriptionId'];
+        $subId = $_POST['subscriptionId'];
         $http = new Http();
 
-        $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/stop?sub_id=' . $sub_id);
+        $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/stop/' . $subId);
         return redirect()->route('subscription');
     }
 }

@@ -16176,6 +16176,7 @@ h3 {
 .welcome-text {
   margin-top: 15%;
   text-align: center;
+  width: 100%;
 }
 
 .boxeslist {

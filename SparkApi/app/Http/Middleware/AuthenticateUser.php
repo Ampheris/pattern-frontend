@@ -8,10 +8,8 @@ class AuthenticateUser
 {
     public function handle($request, Closure $next)
     {
-        // var_dump($request);
         $response = $next($request);
 
-        // var_dump($response);
         if ($response->status() == 401) {
             return redirect()->route('login');
         }
