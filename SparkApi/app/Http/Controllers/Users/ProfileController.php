@@ -43,7 +43,6 @@ class ProfileController extends Controller
         $user = json_decode($user);
         $subscription = json_decode($subscription, true);
 
-
         return view('users.profile', [
             'subscription' => $subscription,
             'balance' => $user->balance
@@ -139,7 +138,6 @@ class ProfileController extends Controller
 
         $http = new Http();
         $subscription = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/start');
-        var_dump($subscription);
         return redirect()->route('subscription', [
             'subscription' => $subscription
         ]);
