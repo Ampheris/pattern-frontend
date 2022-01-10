@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="welcome-text">
-            <h1>Välkommen till Sparkfy</h1>
+            <h1>Välkommen till SparkiFy</h1>
             <h3>Logga in för att fortsätta</h3>
         </div>
         <div class="col-md-8">
