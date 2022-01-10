@@ -13,7 +13,7 @@
         @foreach ($cities as $city)
         <div class="boxeslist">
             <div class="col">
-                <p><b>Namn</b>: {{ $city["city"] }}</p>
+                <p class="biggername">{{ $city["city"] }}</p>
                 <p><b>ID</b>: {{ $city["id"] }}</p>
                 <p><b>X,Y</b>: {{ $city["X"] }}, {{ $city["Y"] }}</p>
                 <p><b>Radius</b>: {{ round($city["radius"], 5) }}</p>

@@ -16,6 +16,11 @@
 }
 
 
+.card {
+    border-radius: 10px;
+    background-color: #eee;
+}
+
 @media (min-width: 1025px) {
     .h-custom-2 {
         height: 100%;
@@ -24,6 +29,6 @@
 
 @media only screen and (max-width: 768px) {
     .form-group {
-        width: 100%;
+        width: 80%;
     }
 }

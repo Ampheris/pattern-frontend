@@ -18,7 +18,7 @@
 	@csrf
 
 	<div class="form-group">
-		<h1>ID: {{ $parking["id"] }} Namn: {{ $parking["name"] }}</h1>
+		<h1 class="alltitle">ID: {{ $parking["id"] }} Namn: {{ $parking["name"] }}</h1>
 		<input type="hidden" id="parkingId" name="parkingId" value="{{ $parking["id"] }}">
 	</div>
 
