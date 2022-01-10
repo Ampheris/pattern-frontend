@@ -16,7 +16,7 @@
         <form method="post" action="{{ route('destroyBike') }}" onsubmit="return confirm('Are you sure you want to delete this bike?');"> 
             @csrf
             <input type="hidden" id="bikeId" name="bikeId" value="{{ $bikes["id"] }}">
-            <button type="submit">Radera cykeln</button>
+            <button type="submit" class="deletebutton">Radera cykeln</button>
         </form>
       @endif
     </div>
@@ -27,7 +27,7 @@
     @csrf
 
     <div class="form-group">
-        <h1>ID: {{ $bikes["id"] }} Namn: {{ $bikes["name"] }}</h1>
+        <h1 class="alltitle">ID: {{ $bikes["id"] }} Namn: {{ $bikes["name"] }}</h1>
         <input type="hidden" id="bikeId" name="bikeId" value="{{ $bikes["id"] }}">
     </div>
     <div class="form-group">

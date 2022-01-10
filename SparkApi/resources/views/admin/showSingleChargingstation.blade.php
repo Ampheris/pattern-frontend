@@ -22,7 +22,7 @@
 	@csrf
 
 	<div class="form-group">
-		<h1>ID: {{ $chargingstations["id"] }} Namn: {{ $chargingstations["name"] }}</h1>
+		<h1 class="alltitle">ID: {{ $chargingstations["id"] }} Namn: {{ $chargingstations["name"] }}</h1>
 		<input type="hidden" id="chargingstationId" name="chargingstationId" value="{{ $chargingstations["id"] }}">
 	</div>
 

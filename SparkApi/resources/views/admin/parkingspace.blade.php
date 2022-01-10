@@ -14,7 +14,7 @@
         @foreach ($parking as $park)
         <div class="boxeslist">
             <div class="col">
-                <p><b>Namn</b>: {{ $park["name"] }}</p>
+                <p class="biggername">{{ $park["name"] }}</p>
                 <p><b>ID</b>: {{ $park["id"] }}</p>
                 <p><b>X,Y</b>: {{ $park["X"] }}, {{ $park["Y"] }}</p>
                 <p><b>Radius</b>: {{ round($park["radius"], 5) }}</p>

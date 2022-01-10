@@ -13,10 +13,12 @@
 	<div class="row">
 		@foreach ($bikes as $bike)
 			<div class="boxeslist">
-				<p><b>Namn</b>: {{ $bike["name"] }}</p>
+				<p class="biggername">{{ $bike["name"] }}</p>
 				<p><b>ID</b>: {{ $bike["id"] }}</p>
 				<p><b>X,Y</b>: {{ $bike["X"] }}, {{ $bike["Y"] }}</p>
-				<p><a class="boxlink" href="{{ route('showSingleBike', ['bikeId' => $bike['id']])}} "> Ändra </a></p>
+				<p><b>Battery</b>: {{ $bike["battery"] }}%</p>
+				<p><b>Status</b>: {{ $bike["status"] }}</p>
+				<p><a class="boxlink" href="{{ route('showSingleBike', ['bikeId' => $bike['id']])}} "> Ändra </a>
 			</div>
 		@endforeach
 	</div>
