@@ -56,6 +56,7 @@ class BikeRideController extends Controller
         $http = new Http();
         $bikeRide = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'bikehistory/stop');
 
+        var_dump($bikeRide);
         if (isset($bikeRide['message'])) {
             $message = $bikeRide['message'];
             return redirect()->route('addToBalance', ['message' => $message]);
