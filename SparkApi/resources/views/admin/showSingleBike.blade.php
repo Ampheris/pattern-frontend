@@ -13,7 +13,7 @@
       <p class="card-text"><b>X,Y</b>: {{ $bikes["X"] }}, {{ $bikes["Y"] }}</p>
 
       @if ($bikes["status"] != "unavailable")
-        <form method="post" action="{{ route('destroyBike') }}" onsubmit="return confirm('Are you sure you want to delete this bike?');"> 
+        <form method="post" action="{{ route('destroyBike') }}" onsubmit="return confirm('Are you sure you want to delete this bike?');">
             @csrf
             <input type="hidden" id="bikeId" name="bikeId" value="{{ $bikes["id"] }}">
             <button type="submit" class="deletebutton">Radera cykeln</button>
@@ -64,7 +64,7 @@
     </div>
 
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Ändra staden</button>
+        <button type="submit" class="btn btn-primary">Uppdatera sparkcykeln</button>
     </div>
 </form>
 @endsection

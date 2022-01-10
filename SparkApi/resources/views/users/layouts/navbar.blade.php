@@ -11,23 +11,22 @@
                 <span class="icon-bar"></span>
             </button>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="slide-navbar-collapse">
-            <div class="navbar-brand-mobile">
-                <a href="{{ route('map') }}">SparkiFy</a>
-            </div>
-            <ul class="nav navbar-nav">
-                <li><a href="{{ route('map') }}"><i class="material-icons">map</i>Karta</a></li>
-                <li><a href="{{ route('profile') }}"><i class="material-icons">account_circle</i>Profil</a></li>
-                <li><a href="{{ route('history') }}"><i class="material-icons">access_time</i>Historik</a></li>
-                <li><a href="#">Hjälp</a></li>
-                <li><a href="#">Inställningar</a></li>
-                <li><a href="{{ 'loginGithub' }}">Login</a></li>
-                <li><a href="{{ 'admin' }}">Admin</a></li>
-            </ul>
-            <a class="logout" href="#">Logga ut</a>
-        </div>
-        <!-- /.navbar-collapse -->
     </div>
-    <!-- /.container-fluid -->
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="slide-navbar-collapse">
+        <div class="navbar-brand-mobile">
+            <a  href="{{ route('map') }}">SparkiFy</a>
+         </div>
+      <ul class="nav navbar-nav">
+          <li><a href="{{ route('map') }}"><i class="material-icons">map</i>Karta</a></li>
+        <li><a href="{{ route('profile') }}"><i class="material-icons">account_circle</i>Profil</a></li>
+        <li><a href="{{ route('history') }}"><i class="material-icons">access_time</i>Historik</a></li>
+        <li><a href="{{ 'loginGithub' }}">Login</a></li>
+        <li><a href="{{ 'admin' }}">Admin</a></li>
+      </ul>
+      <a class="logout" href="#">Logga ut</a>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
 </nav>

@@ -25,8 +25,17 @@ class HistoryController extends Controller
      */
     public function index()
     {
+        $cookie = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
+
         $http = new Http();
-        $history = $http::get(env('API_URL') . 'bikehistory/user/' . '1');
+        $history = $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'bikehistory/user');
         $history = json_decode($history, true);
 
         foreach ($history as $key => $value) {
@@ -38,16 +47,6 @@ class HistoryController extends Controller
 
         return view('users.history', [
             'history' => $history
-        ]);
-    }
-
-    public function showSingleHistory($historyId)
-    {
-        $http = new Http();
-        $history = $http::get(env('API_URL') . 'bikehistory/' . $historyId);
-        $history = json_decode($history, true);
-        return view('users.singleHistory', [
-            "history" => $history
         ]);
     }
 }
