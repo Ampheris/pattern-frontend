@@ -32,6 +32,12 @@ class MapController extends Controller
             'role' => $role
         ];
 
+        $headers_for_map = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role,
+            "accessToken" => $access_token,
+        ];
+
         $http = new Http();
         $bikes = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'bikes');
         $cities = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'cities');
@@ -42,7 +48,8 @@ class MapController extends Controller
             "bikes" => $bikes,
             "cities" => $cities,
             "chargingstations" => $chargingstations,
-            "parkingspaces" => $parkingspaces
+            "parkingspaces" => $parkingspaces,
+            "headersForMap" => json_encode($headers_for_map)
         ]);
     }
 }

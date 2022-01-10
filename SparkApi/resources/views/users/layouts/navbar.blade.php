@@ -19,10 +19,9 @@
           <li><a href="{{ route('map') }}"><i class="material-icons">map</i>Karta</a></li>
         <li><a href="{{ route('profile') }}"><i class="material-icons">account_circle</i>Profil</a></li>
         <li><a href="{{ route('history') }}"><i class="material-icons">access_time</i>Historik</a></li>
-        <li><a href="{{ 'loginGithub' }}">Login</a></li>
-        <li><a href="{{ 'admin' }}">Admin</a></li>
+        <li><a class="logout-big-screen" href="{{ route('logout') }}">Logga ut</a></li>
       </ul>
-      <a class="logout" href="#">Logga ut</a>
+      <a class="logout" href="{{ 'logout' }}">Logga ut</a>
     </div>
     <!-- /.navbar-collapse -->
   </div>

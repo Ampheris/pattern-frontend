@@ -22,4 +22,10 @@ class LoginController extends Controller
     {
         return redirect(env('API_URL') . 'login/github');
     }
+
+    public function logout(): RedirectResponse
+    {
+        \Cookie::queue(\Cookie::forget('access_token'));
+        return redirect()->route('login');
+    }
 }
