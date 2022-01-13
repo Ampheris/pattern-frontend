@@ -14,8 +14,16 @@ class UsersController extends Controller
      */
     public function index()
     {
+        $access_token = $_COOKIE['access_token'];
+        $role = $_COOKIE['role'];
+
+        $headers = [
+            'Api_Token' => env('API_TOKEN'),
+            'role' => $role
+        ];
+
         $http = new Http();
-        $users = $http::get(env('API_URL') . 'users');
+        $users = $http::withToken($access_token)->withHeaders($headers)->get(env('API_URL') . 'users');
         $users = json_decode($users, true);
         return view('admin.users', [
             "users" => $users,

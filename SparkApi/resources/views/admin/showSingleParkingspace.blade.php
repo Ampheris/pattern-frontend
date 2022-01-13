@@ -34,7 +34,7 @@
 
 	<div class="form-group">
 		<label for="Y">Y-Position</label>
-		<input type="number" name="Y" class="form-control" id="Y" step="0.01" value="{{ $parking["X"] }}">
+		<input type="number" name="Y" class="form-control" id="Y" step="0.01" value="{{ $parking["Y"] }}">
 	</div>
 
 	<div class="form-group">

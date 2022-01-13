@@ -44,12 +44,13 @@
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/admin/cities') }}"><i class="material-icons">route</i>Städer</a></li>
-                {{-- <li><a href="{{ route('users') }}">Kunder</a></li> --}}
+                <li><a href="{{ route('users') }}">Kunder</a></li>
                 <li><a href="{{ route('bikes') }}"><i class="material-icons">electric_scooter</i>Sparkcyklar</a></li>
                 <li><a href="{{ route('parking') }}"><i class="material-icons">local_parking</i>Parkeringar</a></li>
                 <li><a href="{{ route('chargingstations') }}"><i class="material-icons">battery_charging_full</i>Laddningsstationer</a></li>
+                <li><a class="logout-big-screen" href="{{ route('logout') }}">Logga ut</a></li>
             </ul>
-            <a class="logout" href="#">Logga ut</a>
+            <a class="logout" href="{{ 'logout' }}">Logga ut</a>
         </div>
         <!-- /.navbar-collapse -->
     </div>
