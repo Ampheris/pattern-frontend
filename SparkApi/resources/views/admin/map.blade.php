@@ -187,8 +187,7 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
      // call locate every 3 seconds... forever
     locate();
     setInterval(locate, 3000);
-    // setInterval(drawBikes, 3000);
-    drawBikes();
+    setInterval(drawBikes, 3000);
     map.on('click', onMapClick);
 </script>
 
