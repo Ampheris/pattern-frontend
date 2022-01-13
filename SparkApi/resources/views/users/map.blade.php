@@ -33,8 +33,6 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     let chargingstations = {!! $chargingstations !!};
     let parkingspaces = {!! $parkingspaces !!};
 
-    let bikeLayer = L.layerGroup();
-
     let locationMarker = L.icon({
         iconUrl: "{{ url('img/location.png')}}",
         iconSize:     [24, 24],
@@ -54,7 +52,6 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     var markers = L.markerClusterGroup();
 
     for (var i = 0; i < bikes.length; i++) {
-        console.log(bikes[i].X);
         if (bikes[i].status === 'available') {
             var bikeId = bikes[i].id;
             markers.addLayer((L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).bindPopup(
