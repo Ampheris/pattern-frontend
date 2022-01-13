@@ -44,7 +44,7 @@
             </div>
             <ul class="nav navbar-nav">
                 <li><a href="{{ url('/admin/cities') }}"><i class="material-icons">route</i>Städer</a></li>
-                <li><a href="{{ route('users') }}">Kunder</a></li>
+                <li><a href="{{ route('users') }}"><i class="material-icons">person</i>Kunder</a></li>
                 <li><a href="{{ route('bikes') }}"><i class="material-icons">electric_scooter</i>Sparkcyklar</a></li>
                 <li><a href="{{ route('parking') }}"><i class="material-icons">local_parking</i>Parkeringar</a></li>
                 <li><a href="{{ route('chargingstations') }}"><i class="material-icons">battery_charging_full</i>Laddningsstationer</a></li>
