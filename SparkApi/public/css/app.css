@@ -16243,7 +16243,7 @@ h3 {
   #slide-navbar-collapse {
     position: fixed;
     top: 0;
-    left: 15px;
+    left: 0;
     z-index: 3;
     width: 280px;
     height: 100%;
@@ -16324,6 +16324,10 @@ h3 {
 
   .logout {
     display: none !important;
+  }
+
+  .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl {
+    width: auto;
   }
 }
 .form-group {
@@ -16428,7 +16432,8 @@ h3 {
 }
 .login i {
   font-size: 1.6em;
-  margin-left: 1em;
+  width: 100%;
+  margin-top: 0.4em;
 }
 
 .read-more {

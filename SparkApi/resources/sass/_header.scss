@@ -33,7 +33,7 @@
     #slide-navbar-collapse {
       position: fixed;
       top: 0;
-      left: 15px;
+      left: 0;
       z-index: 3;
       width: 280px;
       height: 100%;
@@ -125,5 +125,11 @@
 
     .logout {
         display: none !important;
+    }
+
+    .navbar {
+        .container-fluid {
+            width: auto;
+        }
     }
 }

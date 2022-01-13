@@ -15,6 +15,7 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
+<script src="{{ url('js/leaflet.markercluster.js')}}"></script>
 
 <script>
 
@@ -60,13 +61,12 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
         popupAnchor: [1, -34],
         shadowSize: [41, 41]
     });
-
-    console.log(headersForMap);
+    var markers = L.markerClusterGroup();
 
     function getBikes() {
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:8080/sparkapi/v1/bikes',
+            url: 'http://localhost:8000/sparkapi/v1/bikes',
             dataType: 'json',
             headers: {
                 'Authorization': `Bearer ${headersForMap.accessToken}`,
@@ -74,7 +74,6 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
                 'Api_Token': headersForMap.Api_Token,
             },
             success: function (data) {
-                console.log(data);
                 bikes=data;
             }
         });
@@ -83,21 +82,22 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
     function drawBikes() {
         map.removeLayer(bikeLayer);
         bikeLayer = L.layerGroup();
+        map.removeLayer(markers);
+        markers = L.markerClusterGroup();
         getBikes();
-        console.log(typeof bikes);
         if (typeof bikes !== 'undefined') {
             for (var i = 0; i < bikes.length; i++) {
                 if (bikes[i].status == 'available') {
                     // var bikeId = bikes[i].id;
-                    bikeLayer.addLayer(L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).addTo(map).bindPopup(
+                    markers.addLayer(L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).bindPopup(
                         `<p>ID: ${bikes[i].id}: ${bikes[i].name}</p><p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}%</p><p><a href='{{url('/admin/bikes/')}}/${bikes[i].id}'>Ändra</a></p>`
                     ));
                 } else {
-                    bikeLayer.addLayer(L.marker([bikes[i].X, bikes[i].Y], {icon: redIcon}).addTo(map).bindPopup(
+                    markers.addLayer(L.marker([bikes[i].X, bikes[i].Y], {icon: redIcon}).bindPopup(
                         `<p>ID: ${bikes[i].id}: ${bikes[i].name}</p><p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}%</p><p><a href='{{url('/admin/bikes/')}}/${bikes[i].id}'>Ändra</a></p>`
                     ));
                 }
-            bikeLayer.addTo(map);
+            markers.addTo(map);
         }
     }
     }
@@ -187,7 +187,8 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
      // call locate every 3 seconds... forever
     locate();
     setInterval(locate, 3000);
-    setInterval(drawBikes, 3000);
+    // setInterval(drawBikes, 3000);
+    drawBikes();
     map.on('click', onMapClick);
 </script>
 

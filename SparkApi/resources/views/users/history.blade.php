@@ -16,7 +16,7 @@
                   @else
                     <div class="d-flex justify-content-between align-items-center"> <span>Åkturens längd:</span> <span>{{ round($item['time'], 1) }} minuter</span> </div>
                       @if(!is_null($item['total_price']))
-                          <div class="d-flex justify-content-between align-items-center"> <span>Parkerad:</span> <span>{{ $item['inside_parking_area'] === 0 ? 'Innanför avsett område.' : 'Utanför avsett område. + 10 kr avgift.' }}</span> </div>
+                          <div class="d-flex justify-content-between align-items-center"> <span>Parkerad:</span> <span>{{ $item['inside_parking_area'] === 0 ? 'Utanför avsett område. + 10 kr avgift.' : 'Innanför avsett område.' }}</span> </div>
                           <div class="d-flex justify-content-between align-items-center"> <span>Pris:</span> <span>{{ round($item['total_price'], 1) }} kr</span> </div>
                       @else
                           <div class="d-flex justify-content-between align-items-center"> <span>Pris:</span> <span>Månadskort</span> </div>

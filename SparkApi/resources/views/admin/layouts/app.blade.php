@@ -19,7 +19,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/MarkerCluster.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/MarkerCluster.Default.css') }}" rel="stylesheet">
     @yield('styles')
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">

@@ -19,6 +19,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ asset('css/MarkerCluster.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/MarkerCluster.Default.css') }}" rel="stylesheet">
+
 
     @yield('styles')
 

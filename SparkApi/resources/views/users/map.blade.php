@@ -17,6 +17,7 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
 integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
 crossorigin=""></script>
+<script src="{{ url('js/leaflet.markercluster.js')}}"></script>
 
 <script>
 var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.164843254715345], 4);
@@ -50,17 +51,18 @@ var map = L.map('map', { dragging: true }).setView([62.734757172052, 15.16484325
         popupAnchor: [1, -34],
         shadowSize: [41, 41]
     });
+    var markers = L.markerClusterGroup();
 
     for (var i = 0; i < bikes.length; i++) {
         console.log(bikes[i].X);
         if (bikes[i].status === 'available') {
             var bikeId = bikes[i].id;
-            bikeLayer.addLayer((L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).bindPopup(
+            markers.addLayer((L.marker([bikes[i].X, bikes[i].Y], {icon: greenIcon}).bindPopup(
                 `<p>${bikes[i].status}</p><p>Batteri: ${bikes[i].battery}</p><a href='{{url('/startbikeride')}}/${bikes[i].id}'>Starta åktur</a>`
             )));
         }
     }
-    bikeLayer.addTo(map);
+    markers.addTo(map);
 
     // Cities circle
     for (var i = 0; i < cities.length; i++) {

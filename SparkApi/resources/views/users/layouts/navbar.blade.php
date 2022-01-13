@@ -23,7 +23,7 @@
         <li><a href="{{ route('history') }}"><i class="material-icons">access_time</i>Historik</a></li>
         <li><a class="logout-big-screen" href="{{ route('logout') }}">Logga ut</a></li>
       </ul>
-      <a class="logout" href="{{ 'logout' }}">Logga ut</a>
+      <a class="logout" href="{{ route('logout') }}">Logga ut</a>
     </div>
     <!-- /.navbar-collapse -->
   </div>
