@@ -153,17 +153,10 @@ class ProfileController extends Controller
             'role' => $role
         ];
 
-<<<<<<< HEAD
         $subId = $_POST['subscriptionId'];
         $http = new Http();
 
         $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/stop/' . $subId);
-=======
-        $sub_id = $_POST['subscriptionId'];
-        $http = new Http();
-
-        $http::withToken($cookie)->withHeaders($headers)->get(env('API_URL') . 'subscriptions/stop?sub_id=' . $sub_id);
->>>>>>> styleing
         return redirect()->route('subscription');
     }
 }

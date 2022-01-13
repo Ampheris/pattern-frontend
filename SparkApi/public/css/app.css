@@ -16202,8 +16202,33 @@ h3 {
   border-radius: 10px;
 }
 
+main {
+  padding: 1em;
+}
+
+.userlist {
+  display: inline-flex;
+  min-height: 150px;
+  width: 33%;
+  background-color: #eee;
+  padding: 0.5em;
+  margin: 1em auto;
+  border-radius: 10px;
+}
+
+.userlist img {
+  width: 30%;
+  display: block;
+  float: right;
+  border-radius: 25px;
+}
+
 @media only screen and (max-width: 767px) {
   .boxeslist {
+    width: 90%;
+  }
+
+  .userlist {
     width: 90%;
   }
 

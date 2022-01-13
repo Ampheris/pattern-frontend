@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Http;
  * / Route: Shows map
  */
 Route::get('/', [App\Http\Controllers\Users\MapController::class, 'index'])->name('map')->middleware('authUser');
+
 /*
  * / Route: Login
  */
@@ -40,14 +41,12 @@ Route::get('/stopbikeride', [App\Http\Controllers\Users\BikeRideController::clas
  * history Route: Shows a list of the users bikehistory
  */
 Route::get('/history', [App\Http\Controllers\Users\HistoryController::class, 'index'])->name('history')->middleware('authUser');
-// Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
 
 
 /*
  * order Route: Shows a list of the users orders
  */
 Route::get('/orders', [App\Http\Controllers\Users\OrderController::class, 'index'])->name('orders')->middleware('authUser');
-// Route::get('/orders/{orderId}', [App\Http\Controllers\Users\OrderController::class, 'showSingleOrder'])->name('singleOrder');
 
 
 /*
@@ -59,21 +58,13 @@ Route::post('/profile/subscription', [App\Http\Controllers\Users\ProfileControll
 Route::post('/profile/subscription/stop', [App\Http\Controllers\Users\ProfileController::class, 'endSubscription'])->name('endSubscription')->middleware('authUser');
 Route::get('/profile/subscription-form', [App\Http\Controllers\Users\ProfileController::class, 'showSubscriptionPayForm'])->name('showSubscriptionPayForm')->middleware('authUser');
 Route::get('/profile/balance', [App\Http\Controllers\Users\ProfileController::class, 'balance'])->name('balance')->middleware('authUser');
-// Route::get('/profile/balance-form', [App\Http\Controllers\Users\ProfileController::class, 'showBalanceForm'])->name('showBalanceForm');
 Route::post('/profile/balance', [App\Http\Controllers\Users\ProfileController::class, 'addToBalance'])->name('addToBalance')->middleware('authUser');
-
-// Route::get('/history/{historyId}', [App\Http\Controllers\Users\HistoryController::class, 'showSingleHistory'])->name('singleHistory');
 
 
 /*
  * cities admin route: Shows a list of the cities and edit or add a city.
  */
  Route::get('/admin', [App\Http\Controllers\Admin\MapController::class, 'index'])->name('adminMap')->middleware('authAdmin');
-
-/*
- * login admin route
- */
-// Route::get('/admin/login', [App\Http\Controllers\Admin\LoginController::class, 'index'])->name('login');
 
 
 /*
@@ -91,7 +82,7 @@ Route::post('/admin/cities/update', [App\Http\Controllers\Admin\CitiesController
  * Admin user route
 */
 Route::get('/admin/users', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('users')->middleware('authAdmin');
-Route::get('/admin/user', [App\Http\Controllers\Admin\UsersController::class, 'index'])->name('users')->middleware('authAdmin');
+Route::get('/admin/user/{userId}', [App\Http\Controllers\Admin\UsersController::class, 'showSingleUser'])->name('showSingleUser')->middleware('authAdmin');
 
 
 /*
