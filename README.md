@@ -12,6 +12,10 @@
     composer install
     npm install
     ```
+* .env
+    * API_URL ex. http://localhost:8000/sparkapi/v1/
+    * API_TOKEN (contact admin)
+    
 * Run development server:
     ```text
     php artisan serve
